@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SALAH — Software Developer / Vibe Coder</title>
+    <meta
+      name="description"
+      content="Salah — Software Developer and Vibe Coder. Building thoughtful digital products, immersive websites, and AI-powered tools."
+    />
+    <link rel="icon" href="data:," />
+
+    <!-- Editorial Typography Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+    <!-- Compact Top Editorial Navigation Bar -->
+    <header class="site-header" role="banner">
+      <div class="site-header__container">
+        <!-- Brand / Identity with S symbol -->
+        <a href="#hero" class="site-header__logo" aria-label="Salah — Return to top">
+          <img
+            src="/assets/s-symbol.png"
+            alt=""
+            class="site-header__symbol"
+            width="20"
+            height="24"
+            loading="eager"
+            decoding="async"
+          />
+          <span class="site-header__name">SALAH</span>
+        </a>
+
+        <!-- Understated Editorial Availability Indicator -->
+        <div class="site-header__status" role="status" aria-label="Availability Status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span class="status-text">OPEN TO WORK</span>
+        </div>
+
+        <!-- Compact Sable-Inspired Proximity Navigation Dock -->
+        <nav class="site-header__nav" aria-label="Main Navigation">
+          <ul class="nav-dock" id="nav-dock" role="menubar">
+            <li class="nav-dock__item-wrap">
+              <a href="#work" class="nav-dock__link" role="menuitem">
+                <span class="nav-dock__label">WORK</span>
+              </a>
+            </li>
+            <li class="nav-dock__item-wrap">
+              <a href="#about" class="nav-dock__link" role="menuitem">
+                <span class="nav-dock__label">ABOUT</span>
+              </a>
+            </li>
+            <li class="nav-dock__item-wrap">
+              <a href="#contact" class="nav-dock__link" role="menuitem">
+                <span class="nav-dock__label">CONTACT</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content Root -->
+    <main id="site-root" data-scroll-container>
+      <!-- SECTION 01: HERO -->
+      <section id="hero" data-section="hero" data-order="1" class="hero-section">
+        <div class="hero__stage">
+          <!-- Ambient Pixel Magnet Canvas (Layer 0 - Minimal Background Interaction) -->
+          <canvas id="hero-pixel-canvas" class="hero__pixel-canvas" aria-hidden="true"></canvas>
+
+          <!-- Portrait Visual Anchor (Layer 1 - Integrated with Photographic Authority) -->
+          <div class="hero__portrait-layer">
+            <div class="hero__portrait-glow" aria-hidden="true"></div>
+            <div class="hero__portrait-frame">
+              <img
+                src="/assets/portrait-cutout.png"
+                alt="Salah — Software Developer and Vibe Coder"
+                class="hero__portrait-img"
+                width="1086"
+                height="1082"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- 12-Column Foreground Editorial Typography (Layer 2 - Overlapping & Interacting) -->
+          <div class="hero__content-grid">
+            <div class="hero__col-content">
+              <!-- Identity Metadata -->
+              <div class="hero__identity">
+                <div class="hero__identity-primary">SOFTWARE DEVELOPER / CREATIVE TECHNOLOGIST</div>
+                <div class="hero__identity-secondary">AI-POWERED AGENTS</div>
+              </div>
+
+              <!-- Dominant Monumental Headline -->
+              <h1 class="hero__headline" aria-label="I CODE. I BUILD. I EXPLORE.">
+                <span class="hero__line-mask">
+                  <span class="hero__line">I CODE.</span>
+                </span>
+                <span class="hero__line-mask">
+                  <span class="hero__line">I BUILD.</span>
+                </span>
+                <span class="hero__line-mask">
+                  <span class="hero__line hero__line--accent">I EXPLORE<span class="hero__period">.</span></span>
+                </span>
+              </h1>
+
+              <!-- Supporting Editorial Sentence -->
+              <p class="hero__supporting-text">
+                &ldquo;I build thoughtful digital products, immersive websites, and AI-powered tools.&rdquo;
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom Bar: Single Clean Scroll Cue -->
+          <div class="hero__bottom-bar">
+            <a href="#work" class="hero__scroll-cue" aria-label="Scroll to explore work">
+              <span class="scroll-cue__text">SCROLL TO EXPLORE WORK</span>
+              <span class="scroll-cue__icon" aria-hidden="true">&darr;</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 02: WORK (Veloria-Inspired 4-Stage Editorial Interactive Showcase) -->
+      <section id="work" data-section="work" data-order="2" class="work-section" aria-label="Selected Work Section">
+        <div class="work__stage">
+          <!-- Top Section Header -->
+          <div class="work__header">
+            <div class="work__header-meta">
+              <span class="work__header-num">[ 02 ]</span>
+              <span class="work__header-label">SELECTED WORK</span>
+            </div>
+            <div class="work__header-counter" aria-hidden="true">
+              <span class="current-stage">01</span> &mdash; <span class="total-stages">04</span>
+            </div>
+          </div>
+
+          <!-- Main 12-Column Editorial Grid -->
+          <div class="work__grid">
+            <!-- Left Column: Numbered Progress Rail Indicator -->
+            <nav class="work__rail" aria-label="Project stages">
+              <div class="work__rail-track" aria-hidden="true">
+                <div class="work__rail-progress-bar"></div>
+              </div>
+              <ul class="work__rail-list">
+                <li class="work__rail-item is-active" data-index="0" role="button" tabindex="0">
+                  <span class="rail-num">01</span>
+                  <span class="rail-label">SAHARA</span>
+                </li>
+                <li class="work__rail-item" data-index="1" role="button" tabindex="0">
+                  <span class="rail-num">02</span>
+                  <span class="rail-label">PRIVILEGE INTERIOR</span>
+                </li>
+                <li class="work__rail-item" data-index="2" role="button" tabindex="0">
+                  <span class="rail-num">03</span>
+                  <span class="rail-label">DUMMY PROJECT 03</span>
+                </li>
+                <li class="work__rail-item" data-index="3" role="button" tabindex="0">
+                  <span class="rail-num">04</span>
+                  <span class="rail-label">DUMMY PROJECT 04</span>
+                </li>
+              </ul>
+            </nav>
+
+            <!-- Center Visual Composition: Large Editorial Stage -->
+            <div class="work__visual-stage">
+              <div class="work__visual-viewport">
+                <!-- Visual 01: SAHARA (Real Architecture & Workflow) -->
+                <div class="work__visual-slide is-active" data-index="0">
+                  <div class="visual-canvas visual-canvas--sahara">
+                    <div class="visual-canvas__chrome">
+                      <div class="chrome-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                      </div>
+                      <span class="chrome-title">SAHARA // LEGAL METROLOGY PIPELINE &middot; PCR 2011</span>
+                      <span class="chrome-badge">NEMOTRON ACTIVE</span>
+                    </div>
+                    <div class="visual-canvas__content">
+                      <div class="sahara-pipeline">
+                        <!-- Step 1: Input & OCR -->
+                        <div class="pipeline-node pipeline-node--ocr">
+                          <span class="pipeline-node__step">STEP 01</span>
+                          <span class="pipeline-node__title">LABEL OCR EXTRACTION</span>
+                          <span class="pipeline-node__meta">NVIDIA Nemotron OCR v2</span>
+                        </div>
+
+                        <!-- Step 2: Compliance Reasoning Engine (Core) -->
+                        <div class="pipeline-node pipeline-node--core">
+                          <span class="node-icon">&#9670;</span>
+                          <span class="pipeline-node__step">STEP 02</span>
+                          <span class="pipeline-node__title">PCR 2011 COMPLIANCE ENGINE</span>
+                          <span class="pipeline-node__meta">NVIDIA Nemotron 3 Ultra 550B</span>
+                        </div>
+
+                        <!-- Step 3: PDF Audit Generation -->
+                        <div class="pipeline-node pipeline-node--report">
+                          <span class="pipeline-node__step">STEP 03</span>
+                          <span class="pipeline-node__title">INSPECTION REPORT LAB</span>
+                          <span class="pipeline-node__meta">ReportLab PDF Engine</span>
+                        </div>
+
+                        <!-- Connectors SVG -->
+                        <svg class="pipeline-connectors" aria-hidden="true" viewBox="0 0 540 280" fill="none">
+                          <path d="M 140 180 C 140 120, 270 120, 270 70" stroke="#D6C29A" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.75"/>
+                          <path d="M 270 70 C 270 120, 400 120, 400 180" stroke="#8FA18F" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.6"/>
+                        </svg>
+                      </div>
+                      <div class="canvas-telemetry">
+                        <span class="telemetry-item"><span class="k">STACK</span> <span class="v">REACT + FASTAPI</span></span>
+                        <span class="telemetry-item"><span class="k">HOSTING</span> <span class="v">VERCEL + RENDER</span></span>
+                        <span class="telemetry-item"><span class="k">STANDARD</span> <span class="v">PCR 2011 AUDIT</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Visual 02: PRIVILEGE INTERIOR (Premium Spatial & Interior Design Showcase) -->
+                <div class="work__visual-slide" data-index="1">
+                  <div class="visual-canvas visual-canvas--privilege">
+                    <div class="visual-canvas__chrome">
+                      <div class="chrome-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                      </div>
+                      <span class="chrome-title">PRIVILEGE INTERIORS // SPATIAL SOLUTIONS &amp; RESIDENTIAL DESIGN</span>
+                      <span class="chrome-badge">COMPLETED WORK</span>
+                    </div>
+                    <div class="visual-canvas__content visual-canvas__content--interior">
+                      <div class="interior-showcase">
+                        <div class="interior-showcase__frame">
+                          <img
+                            src="/assets/privilege-interior.jpg"
+                            alt="Privilege Interiors — Modern Modular Kitchen and Residential Spatial Design"
+                            class="interior-showcase__img"
+                            loading="lazy"
+                          />
+                          <div class="interior-showcase__overlay"></div>
+                          <div class="interior-showcase__badge">
+                            <span class="badge-tag">INTERIOR EXECUTION</span>
+                            <span class="badge-title">MODULAR KITCHEN &amp; SPATIAL PLAN</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="canvas-telemetry">
+                        <span class="telemetry-item"><span class="k">SCOPE</span> <span class="v">FULL HOME INTERIORS</span></span>
+                        <span class="telemetry-item"><span class="k">SOLUTIONS</span> <span class="v">MODULAR + SPATIAL</span></span>
+                        <span class="telemetry-item"><span class="k">LOCATION</span> <span class="v">BENGALURU</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Visual 03: DUMMY PROJECT 03 (Full-Stack Digital Product) -->
+                <div class="work__visual-slide" data-index="2">
+                  <div class="visual-canvas visual-canvas--dummy-03">
+                    <div class="visual-canvas__chrome">
+                      <div class="chrome-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                      </div>
+                      <span class="chrome-title">DUMMY 03 // DISTRIBUTED COLLABORATION ENGINE</span>
+                      <span class="chrome-badge">SYNCED</span>
+                    </div>
+                    <div class="visual-canvas__content">
+                      <div class="cluster-mockup">
+                        <div class="cluster-card">
+                          <span class="c-title">EDGE REPLICA A</span>
+                          <span class="c-val">0.4ms SYNC</span>
+                        </div>
+                        <div class="cluster-card">
+                          <span class="c-title">EDGE REPLICA B</span>
+                          <span class="c-val">0.6ms SYNC</span>
+                        </div>
+                        <div class="cluster-card">
+                          <span class="c-title">EVENT SOURCING</span>
+                          <span class="c-val">DETERMINISTIC</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Visual 04: DUMMY PROJECT 04 (Experimental Ambient Lab) -->
+                <div class="work__visual-slide" data-index="3">
+                  <div class="visual-canvas visual-canvas--dummy-04">
+                    <div class="visual-canvas__chrome">
+                      <div class="chrome-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                      </div>
+                      <span class="chrome-title">DUMMY 04 // AMBIENT COMPUTING CANVAS</span>
+                      <span class="chrome-badge">LAB</span>
+                    </div>
+                    <div class="visual-canvas__content">
+                      <div class="ambient-mockup">
+                        <div class="ambient-circle ambient-circle--1"></div>
+                        <div class="ambient-circle ambient-circle--2"></div>
+                        <span class="ambient-label">LATENT SPACE TOPOGRAPHY</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Layered Project Detail Cards (Sliding with scroll) -->
+            <div class="work__cards-stage">
+              <!-- Card 01: SAHARA -->
+              <article class="work__card is-active" data-index="0">
+                <div class="card__meta">
+                  <span class="card__meta-num">[ 01 / 04 ]</span>
+                  <span class="card__meta-status">AI INSPECTION SYSTEM · 2026</span>
+                </div>
+                <h3 class="card__title">SAHARA</h3>
+                <p class="card__category">Legal Metrology Inspection System</p>
+                <p class="card__description">
+                  AI-powered legal metrology inspection system that extracts product-label data, checks PCR 2011 compliance, and generatess inspection reports.
+                </p>
+                <div class="card__tags">
+                  <span class="tag">React</span>
+                  <span class="tag">Vite</span>
+                  <span class="tag">FastAPI</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">NVIDIA Nemotron OCR v2</span>
+                  <span class="tag">NVIDIA Nemotron 3 Ultra 550B</span>
+                  <span class="tag">ReportLab</span>
+                  <span class="tag">Vercel</span>
+                  <span class="tag">Render</span>
+                </div>
+                <div class="card__footer">
+                  <a href="https://saharalegalmetrology.vercel.app" target="_blank" rel="noopener noreferrer" class="card__action-link">
+                    <span>EXPLORE PROJECT</span>
+                    <span class="arrow">&nearr;</span>
+                  </a>
+                </div>
+              </article>
+
+              <!-- Card 02: PRIVILEGE INTERIOR -->
+              <article class="work__card" data-index="1">
+                <div class="card__meta">
+                  <span class="card__meta-num">[ 02 / 04 ]</span>
+                  <span class="card__meta-status">SPATIAL &amp; INTERIOR DESIGN · 2001—PRESENT</span>
+                </div>
+                <h3 class="card__title">PRIVILEGE INTERIOR</h3>
+                <p class="card__category">Full Home Interior Design Solutions</p>
+                <p class="card__description">
+                  Complete home interior design and spatial solutions across bespoke residential living, modular kitchens, custom cabinetry, and commercial environments.
+                </p>
+                <div class="card__tags">
+                  <span class="tag">Full Home Interiors</span>
+                  <span class="tag">Modular Kitchens</span>
+                  <span class="tag">Living &amp; Bedroom Plans</span>
+                  <span class="tag">False Ceiling Design</span>
+                  <span class="tag">Flooring &amp; Furniture</span>
+                  <span class="tag">Commercial Spaces</span>
+                  <span class="tag">Turnkey Execution</span>
+                </div>
+                <div class="card__footer">
+                  <a href="https://privilegeinteriorsolutions.com" target="_blank" rel="noopener noreferrer" class="card__action-link">
+                    <span>EXPLORE PROJECT</span>
+                    <span class="arrow">&nearr;</span>
+                  </a>
+                </div>
+              </article>
+
+              <!-- Card 03: DUMMY PROJECT 03 -->
+              <article class="work__card" data-index="2">
+                <div class="card__meta">
+                  <span class="card__meta-num">[ 03 / 04 ]</span>
+                  <span class="card__meta-status">PLACEHOLDER SLOT · IN DEVELOPMENT</span>
+                </div>
+                <h3 class="card__title">DUMMY PROJECT 03</h3>
+                <p class="card__category">Future Project Slot · Cloud Architecture</p>
+                <p class="card__description">
+                  Intentional placeholder reservation for an upcoming cloud-native system, distributed architecture, and event-sourced workflow engine.
+                </p>
+                <div class="card__tags">
+                  <span class="tag">Placeholder Slot</span>
+                  <span class="tag">Distributed Systems</span>
+                  <span class="tag">Cloud Native</span>
+                  <span class="tag">In Progress</span>
+                </div>
+                <div class="card__footer">
+                  <a href="#work" class="card__action-link">
+                    <span>SLOT RESERVED</span>
+                    <span class="arrow">&nearr;</span>
+                  </a>
+                </div>
+              </article>
+
+              <!-- Card 04: DUMMY PROJECT 04 -->
+              <article class="work__card" data-index="3">
+                <div class="card__meta">
+                  <span class="card__meta-num">[ 04 / 04 ]</span>
+                  <span class="card__meta-status">PLACEHOLDER SLOT · IN RESEARCH</span>
+                </div>
+                <h3 class="card__title">DUMMY PROJECT 04</h3>
+                <p class="card__category">Future Project Slot · Experimental Lab</p>
+                <p class="card__description">
+                  Intentional placeholder reservation for an upcoming exploration in generative UI authoring, human-AI systems, and spatial ambient interaction.
+                </p>
+                <div class="card__tags">
+                  <span class="tag">Placeholder Slot</span>
+                  <span class="tag">Generative UI</span>
+                  <span class="tag">Spatial Canvas</span>
+                  <span class="tag">Research</span>
+                </div>
+                <div class="card__footer">
+                  <a href="#work" class="card__action-link">
+                    <span>SLOT RESERVED</span>
+                    <span class="arrow">&nearr;</span>
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 03: ABOUT (Shallow 3D Revolving Editorial Ivory Cards) -->
+      <section id="about" data-section="about" data-order="3" class="about-section" aria-label="About Section">
+        <div class="about__stage">
+          <!-- Top Section Header -->
+          <div class="about__header">
+            <div class="about__header-meta">
+              <span class="about__header-num">[ 03 ]</span>
+              <span class="about__header-label">ABOUT &middot; SALAH</span>
+            </div>
+          </div>
+
+          <!-- 3D Revolving Stage Canvas -->
+          <div class="about__carousel-wrap">
+            <div class="about__carousel circular-carousel" id="about-carousel" role="region" aria-label="About cards circular carousel">
+              <div class="circular-carousel__stage" id="about-stage">
+                <div class="circular-carousel__camera" id="about-camera">
+                  <div class="circular-carousel__ring" id="about-ring">
+                    <!-- Card 01: ABOUT ME -->
+                    <div class="circular-carousel__card" data-index="0">
+                      <article class="circular-carousel__tile circular-carousel__tile--front about__card" tabindex="0">
+                        <div class="card-shade"></div>
+                        <header class="about__card-header">
+                          <span class="card-num">01</span>
+                          <span class="card-tag">PROFILE</span>
+                        </header>
+                        <div class="about__card-body">
+                          <h3 class="card-title">ABOUT ME</h3>
+                          <div class="card-lead">Software Developer &middot; Vibe Coder</div>
+                          <p class="card-desc">I build thoughtful digital products, immersive web experiences, and AI-powered systems.</p>
+                          <ul class="card-points">
+                            <li><span class="bullet">&bull;</span><span>AI systems &amp; autonomous agents</span></li>
+                            <li><span class="bullet">&bull;</span><span>Creative web development</span></li>
+                            <li><span class="bullet">&bull;</span><span>Interactive digital experiences</span></li>
+                          </ul>
+                        </div>
+                        <footer class="about__card-footer">
+                          <span class="card-footer-meta">OPEN TO COMMITMENTS</span>
+                        </footer>
+                      </article>
+                      <div class="circular-carousel__tile circular-carousel__tile--back" aria-hidden="true">
+                        <div class="card-shade"></div>
+                        <div class="card-back-num">01</div>
+                        <div class="card-back-title">ABOUT ME</div>
+                        <div class="card-back-tag">PROFILE &middot; SALAH</div>
+                      </div>
+                    </div>
+
+                    <!-- Card 02: EDUCATION -->
+                    <div class="circular-carousel__card" data-index="1">
+                      <article class="circular-carousel__tile circular-carousel__tile--front about__card" tabindex="0">
+                        <div class="card-shade"></div>
+                        <header class="about__card-header">
+                          <span class="card-num">02</span>
+                          <span class="card-tag">ACADEMICS</span>
+                        </header>
+                        <div class="about__card-body">
+                          <h3 class="card-title">EDUCATION</h3>
+                          <div class="card-lead">B.Tech &middot; Electronics &amp; Communication Engineering</div>
+                          <p class="card-desc">Dhanalakshmi Srinivasan University &middot; 2025&mdash;2029</p>
+                          <ul class="card-points">
+                            <li><span class="bullet">&bull;</span><span>Computer Science &amp; Engineering fundamentals</span></li>
+                            <li><span class="bullet">&bull;</span><span>Electronics &amp; embedded systems</span></li>
+                            <li><span class="bullet">&bull;</span><span>AI, networks &amp; system design</span></li>
+                          </ul>
+                        </div>
+                        <footer class="about__card-footer">
+                          <span class="card-footer-meta">CONTINUOUS SELF-DIRECTED RESEARCH</span>
+                        </footer>
+                      </article>
+                      <div class="circular-carousel__tile circular-carousel__tile--back" aria-hidden="true">
+                        <div class="card-shade"></div>
+                        <div class="card-back-num">02</div>
+                        <div class="card-back-title">EDUCATION</div>
+                        <div class="card-back-tag">ACADEMICS &middot; SALAH</div>
+                      </div>
+                    </div>
+
+                    <!-- Card 03: PARTICIPATIONS -->
+                    <div class="circular-carousel__card" data-index="2">
+                      <article class="circular-carousel__tile circular-carousel__tile--front about__card" tabindex="0">
+                        <div class="card-shade"></div>
+                        <header class="about__card-header">
+                          <span class="card-num">03</span>
+                          <span class="card-tag">ENGAGEMENT</span>
+                        </header>
+                        <div class="about__card-body">
+                          <h3 class="card-title">PARTICIPATIONS</h3>
+                          <div class="card-lead">Hackathons, Sprints &amp; Community</div>
+                          <p class="card-desc">Active participant across fast-paced AI builder sprints, hackathons, and open-source ecosystems.</p>
+                          <ul class="card-points">
+                            <li><span class="bullet">&bull;</span><span>Rapid prototyping &amp; hackathon builder sprints</span></li>
+                            <li><span class="bullet">&bull;</span><span>Autonomous agent frameworks &amp; experiments</span></li>
+                            <li><span class="bullet">&bull;</span><span>Open-source contributions &amp; architecture reviews</span></li>
+                          </ul>
+                        </div>
+                        <footer class="about__card-footer">
+                          <span class="card-footer-meta">BUILD &middot; SHIP &middot; ITERATE</span>
+                        </footer>
+                      </article>
+                      <div class="circular-carousel__tile circular-carousel__tile--back" aria-hidden="true">
+                        <div class="card-shade"></div>
+                        <div class="card-back-num">03</div>
+                        <div class="card-back-title">PARTICIPATIONS</div>
+                        <div class="card-back-tag">ENGAGEMENT &middot; SALAH</div>
+                      </div>
+                    </div>
+
+                    <!-- Card 04: EXPLORING -->
+                    <div class="circular-carousel__card" data-index="3">
+                      <article class="circular-carousel__tile circular-carousel__tile--front about__card" tabindex="0">
+                        <div class="card-shade"></div>
+                        <header class="about__card-header">
+                          <span class="card-num">04</span>
+                          <span class="card-tag">INQUIRY</span>
+                        </header>
+                        <div class="about__card-body">
+                          <h3 class="card-title">EXPLORING</h3>
+                          <div class="card-lead">Emerging Frontiers &amp; Curiosities</div>
+                          <p class="card-desc">Investigating real-time multi-agent orchestration, compact local SLMs, and spatial web canvases.</p>
+                          <ul class="card-points">
+                            <li><span class="bullet">&bull;</span><span>Multi-agent systems &amp; orchestration</span></li>
+                            <li><span class="bullet">&bull;</span><span>Local AI / LLM inference</span></li>
+                            <li><span class="bullet">&bull;</span><span>Spatial &amp; interactive web</span></li>
+                          </ul>
+                        </div>
+                        <footer class="about__card-footer">
+                          <span class="card-footer-meta">RESEARCH &amp; EXPERIMENTS</span>
+                        </footer>
+                      </article>
+                      <div class="circular-carousel__tile circular-carousel__tile--back" aria-hidden="true">
+                        <div class="card-shade"></div>
+                        <div class="card-back-num">04</div>
+                        <div class="card-back-title">EXPLORING</div>
+                        <div class="card-back-tag">INQUIRY &middot; SALAH</div>
+                      </div>
+                    </div>
+
+                    <!-- Card 05: CURRENTLY BUILDING -->
+                    <div class="circular-carousel__card" data-index="4">
+                      <article class="circular-carousel__tile circular-carousel__tile--front about__card" tabindex="0">
+                        <div class="card-shade"></div>
+                        <header class="about__card-header">
+                          <span class="card-num">05</span>
+                          <span class="card-tag">IN PROGRESS</span>
+                        </header>
+                        <div class="about__card-body">
+                          <h3 class="card-title">CURRENTLY BUILDING</h3>
+                          <div class="card-lead">Active Systems &amp; Platforms</div>
+                          <p class="card-desc">Shipping production-grade AI platforms and high-fidelity interactive digital experiences.</p>
+                          <ul class="card-points">
+                            <li><span class="bullet">&bull;</span><span>SAHARA &middot; Legal Metrology AI</span></li>
+                            <li><span class="bullet">&bull;</span><span>Agentic systems &amp; AI workflows</span></li>
+                            <li><span class="bullet">&bull;</span><span>Immersive web experiences</span></li>
+                          </ul>
+                        </div>
+                        <footer class="about__card-footer">
+                          <span class="card-footer-meta">ACTIVE PIPELINE &middot; 2026</span>
+                        </footer>
+                      </article>
+                      <div class="circular-carousel__tile circular-carousel__tile--back" aria-hidden="true">
+                        <div class="card-shade"></div>
+                        <div class="card-back-num">05</div>
+                        <div class="card-back-title">CURRENTLY BUILDING</div>
+                        <div class="card-back-tag">IN PROGRESS &middot; SALAH</div>
+                      </div>
+                    </div>
+
+                    <!-- Card 06: BEYOND THE SCREEN -->
+                    <div class="circular-carousel__card" data-index="5">
+                      <article class="circular-carousel__tile circular-carousel__tile--front about__card" tabindex="0">
+                        <div class="card-shade"></div>
+                        <header class="about__card-header">
+                          <span class="card-num">06</span>
+                          <span class="card-tag">PERSPECTIVES</span>
+                        </header>
+                        <div class="about__card-body">
+                          <h3 class="card-title">BEYOND THE SCREEN</h3>
+                          <div class="card-lead">Craft, Philosophy &amp; Worldview</div>
+                          <p class="card-desc">Guided by patient craftsmanship, editorial minimalism, and the quiet pursuit of mastery.</p>
+                          <ul class="card-points">
+                            <li><span class="bullet">&bull;</span><span>Substance over spectacle</span></li>
+                            <li><span class="bullet">&bull;</span><span>Architecture &amp; editorial design</span></li>
+                            <li><span class="bullet">&bull;</span><span>Patience, precision &amp; craftsmanship</span></li>
+                          </ul>
+                        </div>
+                        <footer class="about__card-footer">
+                          <span class="card-footer-meta">THE PURSUIT OF MASTERY</span>
+                        </footer>
+                      </article>
+                      <div class="circular-carousel__tile circular-carousel__tile--back" aria-hidden="true">
+                        <div class="card-shade"></div>
+                        <div class="card-back-num">06</div>
+                        <div class="card-back-title">BEYOND THE SCREEN</div>
+                        <div class="card-back-tag">PERSPECTIVES &middot; SALAH</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 04: CONTACT (Living Editorial Grid — Final Section) -->
+      <section id="contact" data-section="contact" data-order="4" class="contact-section" aria-label="Contact Section">
+        <div class="contact__stage">
+          <!-- Top Section Header -->
+          <div class="contact__header">
+            <div class="contact__header-meta">
+              <span class="contact__header-num">[ 04 ]</span>
+              <span class="contact__header-label">CONTACT &middot; SALAH</span>
+            </div>
+            <div class="contact__header-status">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span class="status-text">COMMITMENTS OPEN &middot; 2026</span>
+            </div>
+          </div>
+
+          <!-- Main Monumental Statement -->
+          <div class="contact__statement-wrap">
+            <h2 class="contact__statement">
+              <span class="contact__statement-line">LET&rsquo;S BUILD</span>
+              <span class="contact__statement-line">SOMETHING</span>
+              <span class="contact__statement-line contact__statement-line--accent">WORTH REMEMBERING<span class="contact__period">.</span></span>
+            </h2>
+          </div>
+
+          <!-- Asymmetric Living Editorial Grid Composition -->
+          <div class="contact__grid-wrap">
+            <!-- Ambient Cursor-Following Spotlight -->
+            <div class="contact__glow" aria-hidden="true"></div>
+
+            <div class="contact__grid" role="region" aria-label="Contact channels">
+              <!-- Upper Row: 3 Columns -->
+              <!-- 01 — START A CONVO ↗ -->
+              <a
+                href="mailto:salauddin142008@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20Salah"
+                class="contact__cell contact__cell--start"
+                data-cell-id="start-convo"
+                aria-label="Start a convo with Salah via email"
+              >
+                <div class="contact__cell-inner">
+                  <div class="contact__cell-top">
+                    <span class="contact__cell-num">01</span>
+                    <span class="contact__cell-tag">COMMITMENT / WORK</span>
+                    <span class="contact__cell-arrow" aria-hidden="true">&nearr;</span>
+                  </div>
+                  <div class="contact__cell-bottom">
+                    <h3 class="contact__cell-title">START A CONVO</h3>
+                    <span class="contact__cell-value">salauddin142008@gmail.com</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- 02 — WHATSAPP -->
+              <a
+                href="https://wa.me/919790094500"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact__cell contact__cell--whatsapp"
+                data-cell-id="whatsapp"
+                aria-label="Message Salah on WhatsApp at +91 97900 94500"
+              >
+                <div class="contact__cell-inner">
+                  <div class="contact__cell-top">
+                    <span class="contact__cell-num">02</span>
+                    <span class="contact__cell-tag">INSTANT DIRECT</span>
+                    <span class="contact__cell-arrow" aria-hidden="true">&nearr;</span>
+                  </div>
+                  <div class="contact__cell-bottom">
+                    <h3 class="contact__cell-title">WHATSAPP</h3>
+                    <span class="contact__cell-value">+91 97900 94500</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- 03 — EMAIL -->
+              <a
+                href="mailto:salauddin142008@gmail.com"
+                class="contact__cell contact__cell--email"
+                data-cell-id="email"
+                aria-label="Email Salah directly"
+              >
+                <div class="contact__cell-inner">
+                  <div class="contact__cell-top">
+                    <span class="contact__cell-num">03</span>
+                    <span class="contact__cell-tag">DIRECT INBOX</span>
+                    <span class="contact__cell-arrow" aria-hidden="true">&nearr;</span>
+                  </div>
+                  <div class="contact__cell-bottom">
+                    <h3 class="contact__cell-title">EMAIL</h3>
+                    <span class="contact__cell-value">salauddin142008@gmail.com</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Lower Row: 2 Asymmetric Blocks -->
+              <!-- 04 — GITHUB -->
+              <a
+                href="https://github.com/salah1402"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact__cell contact__cell--github"
+                data-cell-id="github"
+                aria-label="Salah's GitHub profile"
+              >
+                <div class="contact__cell-inner">
+                  <div class="contact__cell-top">
+                    <span class="contact__cell-num">04</span>
+                    <span class="contact__cell-tag">SOURCE ARCHIVE</span>
+                    <span class="contact__cell-arrow" aria-hidden="true">&nearr;</span>
+                  </div>
+                  <div class="contact__cell-bottom">
+                    <h3 class="contact__cell-title">GITHUB</h3>
+                    <span class="contact__cell-value">github.com/salah1402</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- 05 — LINKEDIN -->
+              <a
+                href="https://www.linkedin.com/in/mohamed-salauddin-a-b124593b1"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact__cell contact__cell--linkedin"
+                data-cell-id="linkedin"
+                aria-label="Salah's LinkedIn profile"
+              >
+                <div class="contact__cell-inner">
+                  <div class="contact__cell-top">
+                    <span class="contact__cell-num">05</span>
+                    <span class="contact__cell-tag">NETWORK &middot; UPDATES</span>
+                    <span class="contact__cell-arrow" aria-hidden="true">&nearr;</span>
+                  </div>
+                  <div class="contact__cell-bottom">
+                    <h3 class="contact__cell-title">LINKEDIN</h3>
+                    <span class="contact__cell-value">Mohamed Salauddin A</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Minimal Editorial Footer -->
+          <footer class="contact__footer" role="contentinfo">
+            <div class="contact__footer-brand">
+              <img
+                src="/assets/s-symbol.png"
+                alt=""
+                class="contact__footer-symbol"
+                width="16"
+                height="19"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="footer-name">SALAH</span>
+              <span class="footer-divider" aria-hidden="true">&middot;</span>
+              <span class="footer-role">SOFTWARE DEVELOPER &middot; CREATIVE TECHNOLOGIST</span>
+            </div>
+            <div class="contact__footer-copy">
+              <span>&copy; 2026</span>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
