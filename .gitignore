@@ -39,3 +39,7 @@ Thumbs.db
 # Temporary / Scratch
 *.tmp
 *.temp
+
+# Vercel
+.vercel
+
