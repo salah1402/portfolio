@@ -398,8 +398,13 @@ button:focus:not(:focus-visible) {
   will-change: transform;
 }
 
+.hero__headline .hero__line--accent,
+.hero__line--accent {
+  color: var(--color-gold, #CC5500);
+}
+
 .hero__period {
-  color: var(--color-terracotta);
+  color: var(--color-gold, #CC5500);
 }
 
 /* Supporting Editorial Sentence */
