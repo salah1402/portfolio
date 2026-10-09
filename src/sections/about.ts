@@ -3,7 +3,7 @@ import type { ISharedScrollEngine } from '../scroll/index.js';
 import type { SectionPlaceholderHandle } from '../main.js';
 
 export const SECTION_ID = 'about' as const;
-export const SECTION_ORDER = 3 as const;
+export const SECTION_ORDER = 4 as const;
 export const PLANNED_TECHNIQUE = 'standard-dom' as const;
 export const IMPLEMENTED_TECHNIQUE = 'standard-dom' as const;
 

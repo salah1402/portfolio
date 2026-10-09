@@ -3,7 +3,7 @@ import type { ISharedScrollEngine } from '../scroll/index.js';
 import type { SectionPlaceholderHandle } from '../main.js';
 
 export const SECTION_ID = 'contact' as const;
-export const SECTION_ORDER = 4 as const;
+export const SECTION_ORDER = 5 as const;
 export const PLANNED_TECHNIQUE = 'standard-dom' as const;
 export const IMPLEMENTED_TECHNIQUE = 'standard-dom' as const;
 
@@ -43,12 +43,12 @@ export const CONTACT_ITEMS: ContactItem[] = [
     external: true
   },
   {
-    id: 'email',
+    id: 'call',
     num: '03',
-    label: 'DIRECT INBOX',
-    title: 'EMAIL',
-    valueText: 'salauddin142008@gmail.com',
-    href: 'mailto:salauddin142008@gmail.com',
+    label: 'DIRECT LINE',
+    title: 'CALL',
+    valueText: '+91 97900 94500',
+    href: 'tel:+919790094500',
     external: false
   },
   {

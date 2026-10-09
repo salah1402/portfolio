@@ -14,6 +14,11 @@ import {
   SCROLL_CHOREOGRAPHY as WORK_CHOREOGRAPHY
 } from './sections/work.js';
 import {
+  mountSection_services,
+  SECTION_ID as SERVICES_SECTION_ID,
+  SCROLL_CHOREOGRAPHY as SERVICES_CHOREOGRAPHY
+} from './sections/services.js';
+import {
   mountSection_about,
   SECTION_ID as ABOUT_SECTION_ID,
   SCROLL_CHOREOGRAPHY as ABOUT_CHOREOGRAPHY
@@ -152,7 +157,30 @@ export function bootstrapSite(): {
   const workHandle = mountSection_work(scrollEngine, workContainer);
   mountedSections.push(workHandle);
 
-  // SECTION 03: ABOUT (Unpinned 3D Circular Carousel Section)
+  // SECTION 03: SERVICES (Curated Tiers Showcase)
+  const servicesContainer =
+    typeof document !== 'undefined' ? document.getElementById(SERVICES_SECTION_ID) : null;
+  const isServicesPinned = !isReducedMotion && SERVICES_CHOREOGRAPHY.pinned;
+  const servicesDistanceVh = isServicesPinned ? SERVICES_CHOREOGRAPHY.scrollDistanceVh : 0;
+
+  if (servicesContainer && servicesContainer.style) {
+    servicesContainer.style.minHeight = isServicesPinned ? '100vh' : 'auto';
+  }
+
+  scrollEngine.registerSection({
+    id: SERVICES_SECTION_ID,
+    element: `#${SERVICES_SECTION_ID}`,
+    order: 3,
+    pinned: isServicesPinned,
+    scrollDistanceVh: servicesDistanceVh,
+    start: 'top top',
+    end: () => `+=${Math.round((servicesDistanceVh / 100) * window.innerHeight)}`
+  });
+
+  const servicesHandle = mountSection_services(scrollEngine, servicesContainer);
+  mountedSections.push(servicesHandle);
+
+  // SECTION 04: ABOUT (Unpinned 3D Circular Carousel Section)
   const aboutContainer =
     typeof document !== 'undefined' ? document.getElementById(ABOUT_SECTION_ID) : null;
 
@@ -163,7 +191,7 @@ export function bootstrapSite(): {
   scrollEngine.registerSection({
     id: ABOUT_SECTION_ID,
     element: `#${ABOUT_SECTION_ID}`,
-    order: 3,
+    order: 4,
     pinned: false,
     scrollDistanceVh: 0,
     start: 'top bottom',
@@ -173,7 +201,7 @@ export function bootstrapSite(): {
   const aboutHandle = mountSection_about(scrollEngine, aboutContainer);
   mountedSections.push(aboutHandle);
 
-  // SECTION 04: CONTACT (Living Editorial Grid Section)
+  // SECTION 05: CONTACT (Living Editorial Grid Section)
   const contactContainer =
     typeof document !== 'undefined' ? document.getElementById(CONTACT_SECTION_ID) : null;
 
@@ -184,7 +212,7 @@ export function bootstrapSite(): {
   scrollEngine.registerSection({
     id: CONTACT_SECTION_ID,
     element: `#${CONTACT_SECTION_ID}`,
-    order: 4,
+    order: 5,
     pinned: false,
     scrollDistanceVh: 0,
     start: 'top bottom',
@@ -250,6 +278,18 @@ export function bootstrapSite(): {
         scrollDistanceVh: shouldWorkPin ? WORK_CHOREOGRAPHY.scrollDistanceVh : 0
       });
 
+      const shouldServicesPin = !isReduced && SERVICES_CHOREOGRAPHY.pinned;
+      if (servicesContainer && servicesContainer.style) {
+        servicesContainer.style.minHeight = shouldServicesPin ? '100vh' : 'auto';
+      }
+      scrollEngine.registerSection({
+        id: SERVICES_SECTION_ID,
+        element: `#${SERVICES_SECTION_ID}`,
+        order: 3,
+        pinned: shouldServicesPin,
+        scrollDistanceVh: shouldServicesPin ? SERVICES_CHOREOGRAPHY.scrollDistanceVh : 0
+      });
+
       const shouldAboutPin = !isReduced && ABOUT_CHOREOGRAPHY.pinned;
       if (aboutContainer && aboutContainer.style) {
         aboutContainer.style.minHeight = shouldAboutPin ? '100vh' : 'auto';
@@ -257,7 +297,7 @@ export function bootstrapSite(): {
       scrollEngine.registerSection({
         id: ABOUT_SECTION_ID,
         element: `#${ABOUT_SECTION_ID}`,
-        order: 3,
+        order: 4,
         pinned: shouldAboutPin,
         scrollDistanceVh: shouldAboutPin ? ABOUT_CHOREOGRAPHY.scrollDistanceVh : 0
       });

@@ -28,6 +28,25 @@ export interface ProjectItem {
 
 export const PROJECTS: ProjectItem[] = [
   {
+    id: 'privilege-interiors',
+    number: '01',
+    title: 'PRIVILEGE INTERIORS',
+    category: '',
+    status: 'INTERIOR DESIGN · SINCE 2001',
+    year: '2001',
+    description:
+      'Interior design and turnkey execution for homes and businesses across Bengaluru — from modular kitchens to full spatial planning.',
+    tags: [
+      'Full Home Interiors',
+      'Modular Kitchens',
+      'Business Interiors',
+      'Office Interiors',
+      'Turnkey Execution'
+    ],
+    link: 'https://privilege-interior-solutions.vercel.app/',
+    isDummy: false
+  },
+  {
     id: 'sahara',
     number: '01',
     title: 'SAHARA — Legal Metrology Inspection System',
@@ -51,51 +70,28 @@ export const PROJECTS: ProjectItem[] = [
     isDummy: false
   },
   {
-    id: 'privilege-interior',
-    number: '02',
-    title: 'PRIVILEGE INTERIOR',
-    category: 'Full Home Interior Design Solutions',
-    status: 'SPATIAL & INTERIOR DESIGN',
-    year: '2001—PRESENT',
-    description:
-      'Complete home interior design and spatial solutions across bespoke residential living, modular kitchens, custom cabinetry, and commercial environments.',
-    tags: [
-      'Full Home Interiors',
-      'Modular Kitchens',
-      'Living & Bedroom Plans',
-      'False Ceiling Design',
-      'Flooring & Furniture',
-      'Commercial Spaces',
-      'Turnkey Execution'
-    ],
-    link: 'https://privilegeinteriorsolutions.com',
+    id: 'in-progress',
+    number: '03',
+    title: 'IN PROGRESS',
+    category: 'Next Project · In Development',
+    status: 'SLOT RESERVED · Q2 2026',
+    year: '2026',
+    description: 'A new build is underway. Details announced when ready.',
+    tags: ['In Progress', 'In Development'],
+    link: '#work',
     isDummy: false
   },
   {
-    id: 'dummy-03',
-    number: '03',
-    title: 'DUMMY PROJECT 03',
-    category: 'Future Project Slot · Cloud Architecture',
-    status: 'PLACEHOLDER SLOT',
-    year: '2025',
-    description:
-      'Intentional placeholder reservation for an upcoming cloud-native system, distributed architecture, and event-sourced workflow engine.',
-    tags: ['Placeholder Slot', 'Distributed Systems', 'Cloud Native', 'In Progress'],
-    link: '#dummy-03',
-    isDummy: true
-  },
-  {
-    id: 'dummy-04',
+    id: 'next',
     number: '04',
-    title: 'DUMMY PROJECT 04',
-    category: 'Future Project Slot · Experimental Lab',
-    status: 'PLACEHOLDER SLOT',
+    title: 'NEXT',
+    category: 'Upcoming · Experimental Lab',
+    status: 'SLOT RESERVED · Q3 2026',
     year: '2026',
-    description:
-      'Intentional placeholder reservation for an upcoming exploration in generative UI authoring, human-AI systems, and spatial ambient interaction.',
-    tags: ['Placeholder Slot', 'Generative UI', 'Spatial Canvas', 'Research'],
-    link: '#dummy-04',
-    isDummy: true
+    description: 'Exploring a new frontier. Details soon.',
+    tags: ['Upcoming', 'Experimental Lab'],
+    link: '#work',
+    isDummy: false
   }
 ];
 
@@ -240,6 +236,13 @@ export function mountSection_work(
 
     // 2. Continuous interpolation for cards
     cards.forEach((card, index) => {
+      const isActive = index === activeStageIndex;
+      if (isActive) {
+        card.classList.add('is-active');
+      } else {
+        card.classList.remove('is-active');
+      }
+
       const diff = virtualPos - index;
       let opacity = 0;
       let y = 0;
@@ -271,6 +274,13 @@ export function mountSection_work(
 
     // 3. Continuous interpolation for visual slides
     visualSlides.forEach((slide, index) => {
+      const isActive = index === activeStageIndex;
+      if (isActive) {
+        slide.classList.add('is-active');
+      } else {
+        slide.classList.remove('is-active');
+      }
+
       const diff = virtualPos - index;
       let opacity = 0;
       let scale = 1;
@@ -325,7 +335,7 @@ export function mountSection_work(
       if (isReducedMotion) return;
       const targetRatio = index / (totalStages - 1);
       const sectionState = scrollEngine.getSectionState(SECTION_ID);
-      const triggerEl = targetContainer;
+      const triggerEl = targetContainer.closest('.pin-spacer') || targetContainer;
       const rect = triggerEl.getBoundingClientRect();
       const currentScroll = window.scrollY || document.documentElement.scrollTop;
       const sectionTop = currentScroll + rect.top;
