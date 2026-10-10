@@ -1145,37 +1145,81 @@ button:focus:not(:focus-visible) {
   line-height: 1.2;
 }
 
-/* 03: DUMMY 03 Cluster Mockup */
-.cluster-mockup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
+/* 03: AGENTFRAME Durable AI Agent Runtime Visual */
+.visual-canvas__content--agentframe {
+  padding: 18px 24px 20px;
 }
 
-.cluster-card {
-  background: #233127;
-  border: 1px solid rgba(185, 185, 167, 0.18);
+.agentframe-showcase {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  margin-bottom: 14px;
+}
+
+.agentframe-showcase__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 250px;
   border-radius: 6px;
-  padding: 18px 20px;
+  overflow: hidden;
+  border: 1px solid rgba(204, 85, 0,  0.28);
+  box-shadow: 0 14px 32px rgba(8, 16, 11, 0.55);
+  background: #0e0e10;
+}
+
+.agentframe-showcase__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: contrast(1.04) brightness(0.98);
+  display: block;
+}
+
+.agentframe-showcase__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(14, 14, 16, 0.88) 0%,
+    rgba(14, 14, 16, 0.25) 45%,
+    transparent 80%
+  );
+  pointer-events: none;
+}
+
+.agentframe-showcase__badge {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 2px;
+  z-index: 2;
+  pointer-events: none;
 }
 
-.cluster-card .c-title {
+.agentframe-showcase__badge .badge-tag {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  color: var(--color-muted-sage);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  color: var(--color-gold);
+  line-height: 1;
 }
 
-.cluster-card .c-val {
+.agentframe-showcase__badge .badge-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.94rem;
-  color: var(--color-gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ivory);
+  line-height: 1.2;
 }
 
 /* 04: DUMMY 04 Ambient Mockup */
@@ -1646,6 +1690,56 @@ button:focus:not(:focus-visible) {
   }
 
   .interior-showcase__badge .badge-title {
+    font-size: 0.6rem;
+    color: var(--color-ivory);
+    font-weight: 600;
+  }
+
+  /* Agentframe Showcase frame */
+  .visual-canvas__content--agentframe {
+    padding: 0;
+  }
+
+  .agentframe-showcase {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .agentframe-showcase__frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .agentframe-showcase__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    display: block;
+  }
+
+  .agentframe-showcase__badge {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    background: rgba(14, 14, 16, 0.9);
+    border: 1px solid rgba(204, 85, 0, 0.35);
+    border-radius: 4px;
+    padding: 4px 8px;
+    backdrop-filter: blur(4px);
+  }
+
+  .agentframe-showcase__badge .badge-tag {
+    font-size: 0.5rem;
+    color: var(--color-gold);
+    display: block;
+    letter-spacing: 0.1em;
+  }
+
+  .agentframe-showcase__badge .badge-title {
     font-size: 0.6rem;
     color: var(--color-ivory);
     font-weight: 600;

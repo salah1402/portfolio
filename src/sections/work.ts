@@ -48,7 +48,7 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: 'sahara',
-    number: '01',
+    number: '02',
     title: 'SAHARA — Legal Metrology Inspection System',
     category: 'Legal Metrology Inspection System',
     status: 'AI INSPECTION SYSTEM',
@@ -70,15 +70,23 @@ export const PROJECTS: ProjectItem[] = [
     isDummy: false
   },
   {
-    id: 'in-progress',
+    id: 'agentframe',
     number: '03',
-    title: 'IN PROGRESS',
-    category: 'Next Project · In Development',
-    status: 'SLOT RESERVED · Q2 2026',
+    title: 'AGENTFRAME — Autonomous Agent Runtime Harness',
+    category: 'Autonomous Agent Runtime & Workspace Harness',
+    status: 'AI AGENT HARNESS · 2026',
     year: '2026',
-    description: 'A new build is underway. Details announced when ready.',
-    tags: ['In Progress', 'In Development'],
-    link: '#work',
+    description:
+      'An open AI harness providing persistent memory, tool sandboxing, and human-in-the-loop governance — enabling agents to turn instructions into durable finished work.',
+    tags: [
+      'TypeScript SDK',
+      'MCP Protocol',
+      'Persistent Memory',
+      'SQLite Workspaces',
+      'Human Approvals',
+      'Vercel'
+    ],
+    link: 'https://agentframe.vercel.app/',
     isDummy: false
   },
   {
