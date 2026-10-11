@@ -47,26 +47,23 @@ export const PROJECTS: ProjectItem[] = [
     isDummy: false
   },
   {
-    id: 'sahara',
+    id: 'clinic',
     number: '02',
-    title: 'SAHARA — Legal Metrology Inspection System',
-    category: 'Legal Metrology Inspection System',
-    status: 'AI INSPECTION SYSTEM',
+    title: 'AURA DENTAL & AESTHETICS',
+    category: 'Advanced Digital Dentistry & Clinical Practice',
+    status: 'DIGITAL DENTISTRY · 2026',
     year: '2026',
     description:
-      'AI-powered legal metrology inspection system that extracts product-label data, checks PCR 2011 compliance, and generatess inspection reports.',
+      'High-performance digital healthcare platform featuring CEREC same-day crown workflows, 3D intraoral diagnostics, and seamless patient scheduling.',
     tags: [
+      'Next.js',
       'React',
-      'Vite',
-      'FastAPI',
-      'Python',
-      'NVIDIA Nemotron OCR v2',
-      'Nemotron 3 Ultra 550B',
-      'ReportLab',
-      'Vercel',
-      'Render'
+      'Digital Dentistry',
+      'CEREC CAD/CAM',
+      'Tailwind CSS',
+      'Vercel'
     ],
-    link: 'https://saharalegalmetrology.vercel.app',
+    link: 'https://clinic-demo-blond-nine.vercel.app/',
     isDummy: false
   },
   {
@@ -90,15 +87,26 @@ export const PROJECTS: ProjectItem[] = [
     isDummy: false
   },
   {
-    id: 'next',
+    id: 'sahara',
     number: '04',
-    title: 'NEXT',
-    category: 'Upcoming · Experimental Lab',
-    status: 'SLOT RESERVED · Q3 2026',
+    title: 'SAHARA — Legal Metrology Inspection System',
+    category: 'Legal Metrology Inspection System',
+    status: 'AI INSPECTION SYSTEM · 2026',
     year: '2026',
-    description: 'Exploring a new frontier. Details soon.',
-    tags: ['Upcoming', 'Experimental Lab'],
-    link: '#work',
+    description:
+      'AI-powered legal metrology inspection system that extracts product-label data, checks PCR 2011 compliance, and generates inspection reports.',
+    tags: [
+      'React',
+      'Vite',
+      'FastAPI',
+      'Python',
+      'NVIDIA Nemotron OCR v2',
+      'Nemotron 3 Ultra 550B',
+      'ReportLab',
+      'Vercel',
+      'Render'
+    ],
+    link: 'https://saharalegalmetrology.vercel.app',
     isDummy: false
   }
 ];

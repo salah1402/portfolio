@@ -1145,6 +1145,83 @@ button:focus:not(:focus-visible) {
   line-height: 1.2;
 }
 
+/* 02: AURA DENTAL & AESTHETICS Clinical Showcase */
+.visual-canvas__content--clinic {
+  padding: 18px 24px 20px;
+}
+
+.clinic-showcase {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  margin-bottom: 14px;
+}
+
+.clinic-showcase__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 250px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(204, 85, 0,  0.28);
+  box-shadow: 0 14px 32px rgba(8, 16, 11, 0.55);
+  background: #0f1715;
+}
+
+.clinic-showcase__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: contrast(1.04) brightness(0.96);
+  display: block;
+}
+
+.clinic-showcase__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 21, 0.88) 0%,
+    rgba(15, 23, 21, 0.25) 45%,
+    transparent 80%
+  );
+  pointer-events: none;
+}
+
+.clinic-showcase__badge {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.clinic-showcase__badge .badge-tag {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.clinic-showcase__badge .badge-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ivory);
+  line-height: 1.2;
+}
+
 /* 03: AGENTFRAME Durable AI Agent Runtime Visual */
 .visual-canvas__content--agentframe {
   padding: 18px 24px 20px;
@@ -1740,6 +1817,56 @@ button:focus:not(:focus-visible) {
   }
 
   .agentframe-showcase__badge .badge-title {
+    font-size: 0.6rem;
+    color: var(--color-ivory);
+    font-weight: 600;
+  }
+
+  /* Clinic Showcase frame */
+  .visual-canvas__content--clinic {
+    padding: 0;
+  }
+
+  .clinic-showcase {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .clinic-showcase__frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .clinic-showcase__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    display: block;
+  }
+
+  .clinic-showcase__badge {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    background: rgba(15, 23, 21, 0.9);
+    border: 1px solid rgba(204, 85, 0, 0.35);
+    border-radius: 4px;
+    padding: 4px 8px;
+    backdrop-filter: blur(4px);
+  }
+
+  .clinic-showcase__badge .badge-tag {
+    font-size: 0.5rem;
+    color: var(--color-gold);
+    display: block;
+    letter-spacing: 0.1em;
+  }
+
+  .clinic-showcase__badge .badge-title {
     font-size: 0.6rem;
     color: var(--color-ivory);
     font-weight: 600;
