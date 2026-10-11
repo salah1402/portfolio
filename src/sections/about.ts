@@ -233,8 +233,19 @@ export function mountSection_about(
    */
   let lastTime = performance.now();
 
-  function renderFrame(time: number): void {
+  let isAboutVisible = true;
+
+  const unsubscribeSection = scrollEngine.subscribeSection(SECTION_ID, (sectionState) => {
     if (!isMounted) return;
+    // Section is active if progress > -0.2 and < 1.2
+    isAboutVisible = sectionState.isActive || (sectionState.progress > -0.15 && sectionState.progress < 1.15);
+  });
+
+  function renderFrame(time: number): void {
+    if (!isMounted || !isAboutVisible) {
+      lastTime = time;
+      return;
+    }
 
     if (isReducedMotion) {
       renderStaticFallback();
@@ -395,7 +406,7 @@ export function mountSection_about(
     };
 
     const onClick = () => {
-      if (isReducedMotion) return;
+      if (isReducedMotion || hasDragged) return;
       const { stepDeg } = getCylinderGeometry();
       let target = -index * stepDeg;
       target += 360 * Math.round((currentAngle - target) / 360);
@@ -415,6 +426,7 @@ export function mountSection_about(
   });
 
   // 2. Drag & Momentum pointer listeners on carousel:
+  let hasDragged = false;
   if (carousel) {
     let pointerStartX = 0;
     let pointerLastX = 0;
@@ -424,6 +436,7 @@ export function mountSection_about(
       if (isReducedMotion) return;
       if (e.pointerType !== 'touch' && e.button !== 0) return;
       isDragging = true;
+      hasDragged = false;
       isHovered = false;
       pointerStartX = e.clientX;
       pointerLastX = e.clientX;
@@ -437,6 +450,9 @@ export function mountSection_about(
 
     const onPointerMove = (e: PointerEvent) => {
       if (!isDragging) return;
+      if (Math.abs(e.clientX - pointerStartX) > 6) {
+        hasDragged = true;
+      }
       const now = performance.now();
       const dt = Math.max((now - pointerLastTime) / 1000, 0.008);
       const dx = e.clientX - pointerLastX;
@@ -495,6 +511,7 @@ export function mountSection_about(
     dispose(): void {
       isMounted = false;
       gsap.ticker.remove(renderFrame);
+      unsubscribeSection();
       unsubscribeGlobal();
       cleanupListeners.forEach((fn) => fn());
     }

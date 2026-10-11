@@ -526,19 +526,19 @@ button:focus:not(:focus-visible) {
 
   .site-header__nav {
     flex-shrink: 0;
-    max-width: 65%;
+    max-width: 68%;
   }
 
   .nav-dock {
-    padding: 2px 4px;
-    gap: 2px;
+    padding: 2px 3px;
+    gap: 1px;
     background: rgba(35, 49, 39, 0.88);
   }
 
   .nav-dock__link {
-    padding: 4px 7px;
-    font-size: 0.65rem;
-    letter-spacing: 0.06em;
+    padding: 4px 6px;
+    font-size: 0.63rem;
+    letter-spacing: 0.05em;
   }
 
   .hero-section {

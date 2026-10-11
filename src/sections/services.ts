@@ -102,7 +102,17 @@ export function mountSection_services(
   let activeIndex = 0;
   let isReducedMotion = scrollEngine.getState().prefersReducedMotion;
 
-  function setActive(index: number): void {
+  let isUserSelected = false;
+  let userSelectTimer: ReturnType<typeof setTimeout> | null = null;
+
+  function setActive(index: number, byUser = false): void {
+    if (byUser) {
+      isUserSelected = true;
+      if (userSelectTimer) clearTimeout(userSelectTimer);
+      userSelectTimer = setTimeout(() => {
+        isUserSelected = false;
+      }, 2500);
+    }
     if (index === activeIndex && items[index]?.classList.contains('is-active')) return;
     const prevIndex = activeIndex;
     activeIndex = Math.max(0, Math.min(previewPanels.length - 1, index));
@@ -164,6 +174,9 @@ export function mountSection_services(
       header.style.opacity = headerProgress.toString();
     }
 
+    // Don't override if user recently tapped a tab
+    if (isUserSelected) return;
+
     // 0.10 - 0.85 -> map progress to tier index: floor(((progress - 0.10) / 0.75) * 3) clamped to 0..2
     if (clamped >= 0.1 && clamped <= 0.85) {
       const tierNorm = (clamped - 0.1) / 0.75;
@@ -189,7 +202,7 @@ export function mountSection_services(
   const clickHandlers: Array<{ el: HTMLElement; fn: () => void }> = [];
   items.forEach((item, index) => {
     const fn = () => {
-      setActive(index);
+      setActive(index, true);
     };
     item.addEventListener('click', fn);
     clickHandlers.push({ el: item, fn });
@@ -247,6 +260,7 @@ export function mountSection_services(
     },
     dispose(): void {
       isMounted = false;
+      if (userSelectTimer) clearTimeout(userSelectTimer);
       unsubscribeSection();
       unsubscribeGlobal();
       clickHandlers.forEach(({ el, fn }) => el.removeEventListener('click', fn));

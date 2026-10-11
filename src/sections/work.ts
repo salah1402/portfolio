@@ -149,7 +149,7 @@ export function mountSection_work(
 
   let isReducedMotion = scrollEngine.getState().prefersReducedMotion;
   const totalStages = 4;
-  let isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  let isMobile = typeof window !== 'undefined' && window.innerWidth <= 860;
   let activeMobileStage = 0;
 
   function setMobileStage(index: number): void {
@@ -393,7 +393,7 @@ export function mountSection_work(
   // Handle window resize between mobile and desktop modes
   const onResize = () => {
     const wasMobile = isMobile;
-    isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    isMobile = typeof window !== 'undefined' && window.innerWidth <= 860;
     if (isMobile !== wasMobile) {
       if (isMobile) {
         setMobileStage(activeMobileStage);
