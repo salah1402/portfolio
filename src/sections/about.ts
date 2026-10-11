@@ -195,24 +195,24 @@ export function mountSection_about(
       };
     } else if (width > 420) {
       return {
-        radius: 340,
+        radius: 290,
         stepDeg: 60,
-        tilt: -3.8,
-        perspective: 1300
+        tilt: -3.5,
+        perspective: 1400
       };
     } else if (width > 360) {
       return {
-        radius: 310,
+        radius: 255,
         stepDeg: 60,
-        tilt: -3.2,
-        perspective: 1200
+        tilt: -3.0,
+        perspective: 1300
       };
     } else {
       return {
-        radius: 280,
+        radius: 225,
         stepDeg: 60,
-        tilt: -2.8,
-        perspective: 1100
+        tilt: -2.5,
+        perspective: 1200
       };
     }
   }
@@ -221,7 +221,7 @@ export function mountSection_about(
     if (!camera || !stage) return;
     const width = typeof window !== 'undefined' ? window.innerWidth : 1440;
     const { radius, tilt, perspective } = getCylinderGeometry();
-    const camDist = width <= 360 ? radius + 210 : (width <= 768 ? radius + 150 : radius);
+    const camDist = width <= 360 ? radius + 230 : (width <= 768 ? radius + 190 : radius);
     stage.style.perspective = `${perspective}px`;
     camera.style.transform = `translate3d(0, ${width <= 768 ? -16 : -26}px, ${-camDist}px) rotateX(${tilt}deg)`;
   }
@@ -246,7 +246,7 @@ export function mountSection_about(
 
     const width = typeof window !== 'undefined' ? window.innerWidth : 1440;
     const { radius, stepDeg, tilt, perspective } = getCylinderGeometry();
-    const camDist = width <= 360 ? radius + 210 : (width <= 768 ? radius + 150 : radius);
+    const camDist = width <= 360 ? radius + 230 : (width <= 768 ? radius + 190 : radius);
 
     if (stage) stage.style.perspective = `${perspective}px`;
     if (camera) camera.style.transform = `translate3d(0, ${width <= 768 ? -16 : -26}px, ${-camDist}px) rotateX(${tilt}deg)`;
@@ -307,6 +307,15 @@ export function mountSection_about(
       // Depth z-index
       const baseZIndex = Math.round(100 - Math.abs(worldAngle));
       card.style.zIndex = (isHov ? 500 : baseZIndex).toString();
+
+      // On narrow mobile devices, fade cards that recede into the sides/back so the front card is crisp
+      if (width <= 768) {
+        const absAngle = Math.abs(worldAngle);
+        const mobileOpacity = absAngle > 45 ? 0 : Math.max(0, 1 - Math.pow(absAngle / 35, 2));
+        card.style.opacity = mobileOpacity.toFixed(2);
+      } else {
+        card.style.opacity = '1';
+      }
     });
 
     // Update 01 / 06 indicator based on actual card facing the viewer

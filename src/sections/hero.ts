@@ -385,13 +385,17 @@ export function mountSection_hero(
     if (isReducedMotion) return;
 
     const progress = Math.max(0, Math.min(1, sectionState.progress));
+    const isMobileViewport = typeof window !== 'undefined' && window.innerWidth <= 768;
 
     // Parallax scroll drift across progress
     if (portraitEl) {
-      const scrollY = -progress * 60;
+      const scrollY = -progress * (isMobileViewport ? 20 : 60);
+      const portraitOpacity = isMobileViewport
+        ? 1 - Math.max(0, progress - 0.9) * 10
+        : 1 - Math.max(0, progress - 0.75) * 3;
       gsap.to(portraitEl, {
         y: scrollY,
-        opacity: 1 - Math.max(0, progress - 0.75) * 3, // soft fade toward end of hero
+        opacity: Math.max(0, portraitOpacity),
         duration: 0.2,
         ease: 'none',
         overwrite: 'auto'
@@ -399,10 +403,13 @@ export function mountSection_hero(
     }
 
     if (contentCol) {
-      const scrollY = -progress * 45;
+      const scrollY = -progress * (isMobileViewport ? 15 : 45);
+      const contentOpacity = isMobileViewport
+        ? Math.max(0, 1 - Math.max(0, progress - 0.82) * 5)
+        : Math.max(0, 1 - progress * 1.3);
       gsap.to(contentCol, {
         y: scrollY,
-        opacity: Math.max(0, 1 - progress * 1.3),
+        opacity: contentOpacity,
         duration: 0.2,
         ease: 'none',
         overwrite: 'auto'
