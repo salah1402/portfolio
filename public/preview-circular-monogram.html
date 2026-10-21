@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SALAH — Circular Monogram with Normal Font S (Phase 1 Preview)</title>
+  <link rel="icon" type="image/svg+xml" href="/preview-assets/salah-circular-normal-medium-dark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-bone: #f1f1f1;
+      --bg-dark: #181818;
+      --text-graphite: #2b2b2b;
+      --text-bone: #f1f1f1;
+      --accent: #fc4778;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: #0d0d0d;
+      color: #e5e5e5;
+      padding: 32px 20px 100px;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .header-banner {
+      background: #141414;
+      border: 1px solid #262626;
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+    .badge {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(252, 71, 120, 0.15);
+      color: #fc4778;
+      border: 1px solid rgba(252, 71, 120, 0.3);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    h1 {
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    p.lead {
+      color: #999;
+      font-size: 14.5px;
+      max-width: 820px;
+    }
+    .section-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #fc4778;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section {
+      margin-bottom: 48px;
+    }
+    .preview-card {
+      background: #141414;
+      border: 1px solid #242424;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .preview-card-header {
+      padding: 14px 20px;
+      background: #1a1a1a;
+      border-bottom: 1px solid #242424;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: #888;
+    }
+    .tag {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .tag-stylized { background: #2a2a2a; color: #888; }
+    .tag-normal { background: #163824; color: #4ade80; border: 1px solid #22c55e33; }
+    
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: #242424;
+    }
+    @media (max-width: 860px) {
+      .comparison-grid { grid-template-columns: 1fr; }
+    }
+    .comparison-pane {
+      background: #111;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pane-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #777;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Simulation containers */
+    .sim-navbar {
+      background: rgba(241, 241, 241, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(43, 43, 43, 0.12);
+      padding: 10px 18px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #2b2b2b;
+    }
+    .sim-footer-top {
+      background: #181818;
+      border: 1px solid rgba(241, 241, 241, 0.1);
+      padding: 20px;
+      border-radius: 6px;
+      color: #f1f1f1;
+    }
+    .sim-footer-bottom {
+      background: #181818;
+      border-top: 1px solid rgba(241, 241, 241, 0.1);
+      padding: 14px 18px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(241, 241, 241, 0.55);
+    }
+    .brand-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .brand-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.65;
+    }
+
+    /* Matrix Styles */
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .matrix-card {
+      border-radius: 8px;
+      padding: 28px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      border: 1px solid #282828;
+    }
+    .matrix-card.bone { background: #f1f1f1; color: #1a1a1a; }
+    .matrix-card.white { background: #ffffff; color: #1a1a1a; }
+    .matrix-card.charcoal { background: #181818; color: #f1f1f1; }
+    .matrix-card.pitch { background: #0e0e0e; color: #f1f1f1; }
+
+    .matrix-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+    .swatch-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+    }
+    .color-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1px solid rgba(128,128,128,0.3);
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header Banner -->
+    <div class="header-banner">
+      <div class="badge">Phase 1 Preview · Normal Font Update</div>
+      <h1>SALAH — Circular Monogram with Normal Font S</h1>
+      <p class="lead">
+        Updated per your request: The stylized letterform has been replaced with a <strong>clean, natural standard font "S"</strong> (unadorned, balanced sans-serif letterform with generous negative space). Evaluated in both <strong>Normal Medium</strong> (recommended for optical balance at small sizes) and <strong>Normal Regular</strong> weights.
+      </p>
+    </div>
+
+    <!-- Section 1: Main Header / Navbar Comparison -->
+    <div class="section">
+      <div class="section-title">01 — Main Navbar & Sticky Header (Normal Font S)</div>
+      <div class="preview-card">
+        <div class="preview-card-header">
+          <span>Component: <code>src/components/layout/Navbar.tsx</code> (Header Background: <code>#f1f1f1</code>)</span>
+          <span>Target Scale: 34px</span>
+        </div>
+        <div class="comparison-grid">
+          
+          <!-- Option A: Normal Font (Medium Weight) - Recommended -->
+          <div class="comparison-pane">
+            <div class="pane-label">
+              <span>Normal Font S (Medium Weight — Recommended)</span>
+              <span class="tag tag-normal">Option A</span>
+            </div>
+            <div class="sim-navbar">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <img
+                  src="/preview-assets/salah-circular-normal-medium-light.svg"
+                  alt="Normal Font S (Medium)"
+                  style="height: 34px; width: auto; object-fit: contain; display: block;"
+                />
+                <div class="brand-text">
+                  <span>SALAH</span>
+                  <span style="opacity: 0.25;">/</span>
+                  <span class="brand-sub">Independent Digital Studio · Thanjavur</span>
+                </div>
+              </div>
+              <span style="font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.6;">[Menu]</span>
+            </div>
+            <p style="font-size: 12px; color: #4ade80;">
+              Classic normal sans-serif "S" with natural curves, standard horizontal terminals, and balanced stroke thickness matching the outer ring.
+            </p>
+          </div>
+
+          <!-- Option B: Normal Font (Regular Weight) -->
+          <div class="comparison-pane">
+            <div class="pane-label">
+              <span>Normal Font S (Regular Weight)</span>
+              <span class="tag tag-normal">Option B</span>
+            </div>
+            <div class="sim-navbar">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <img
+                  src="/preview-assets/salah-circular-normal-regular-light.svg"
+                  alt="Normal Font S (Regular)"
+                  style="height: 34px; width: auto; object-fit: contain; display: block;"
+                />
+                <div class="brand-text">
+                  <span>SALAH</span>
+                  <span style="opacity: 0.25;">/</span>
+                  <span class="brand-sub">Independent Digital Studio · Thanjavur</span>
+                </div>
+              </div>
+              <span style="font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.6;">[Menu]</span>
+            </div>
+            <p style="font-size: 12px; color: #a0a0a0;">
+              Lighter regular weight normal "S" with extra airy negative space.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Mobile Header Simulation -->
+    <div class="section">
+      <div class="section-title">02 — Mobile Header Viewport (390px)</div>
+      <div class="preview-card">
+        <div class="preview-card-header">
+          <span>Responsive Viewport: 390px (Mobile Header)</span>
+          <span>Target Scale: 32px</span>
+        </div>
+        <div class="comparison-grid">
+          
+          <div class="comparison-pane">
+            <div class="pane-label">
+              <span>Mobile Header with Normal Font S</span>
+              <span class="tag tag-normal">Mobile</span>
+            </div>
+            <div class="sim-navbar" style="max-width: 390px; margin: 0 auto; width: 100%;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <img
+                  src="/preview-assets/salah-circular-normal-medium-light.svg"
+                  alt="Normal Font S"
+                  style="height: 32px; width: auto; object-fit: contain;"
+                />
+                <span style="font-weight: 600; font-size: 16px;">SALAH</span>
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <span style="font-family: 'Space Mono', monospace; font-size: 10px; background: #222; color: #fff; padding: 4px 8px; border-radius: 4px;">START</span>
+                <span style="font-size: 16px;">☰</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="comparison-pane" style="background: #181818;">
+            <div class="pane-label">
+              <span>Mobile Dark Mode Simulation</span>
+              <span class="tag tag-normal">Dark</span>
+            </div>
+            <div class="sim-navbar" style="max-width: 390px; margin: 0 auto; width: 100%; background: #202020; color: #fff; border-color: #333;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <img
+                  src="/preview-assets/salah-circular-normal-medium-dark.svg"
+                  alt="Normal Font S Dark"
+                  style="height: 32px; width: auto; object-fit: contain;"
+                />
+                <span style="font-weight: 600; font-size: 16px; color: #fff;">SALAH</span>
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <span style="font-family: 'Space Mono', monospace; font-size: 10px; background: #fff; color: #111; padding: 4px 8px; border-radius: 4px;">START</span>
+                <span style="font-size: 16px;">☰</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Footer Top Brand Header -->
+    <div class="section">
+      <div class="section-title">03 — Footer Top Brand Header (Bone White on #181818)</div>
+      <div class="preview-card">
+        <div class="preview-card-header">
+          <span>Component: <code>src/components/layout/Footer.tsx</code> (Dark Background: <code>#181818</code>)</span>
+          <span>Target Scale: 34px</span>
+        </div>
+        <div class="comparison-grid">
+          
+          <div class="comparison-pane">
+            <div class="pane-label">
+              <span>Normal Font S (Medium — Bone White #f5f5f5)</span>
+              <span class="tag tag-normal">Recommended</span>
+            </div>
+            <div class="sim-footer-top">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <img
+                  src="/preview-assets/salah-circular-normal-medium-dark.svg"
+                  alt="Normal Font S Dark"
+                  style="height: 34px; width: auto; object-fit: contain;"
+                />
+                <div class="brand-text" style="color: #f1f1f1;">
+                  <span>SALAH / Independent Digital Studio</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="comparison-pane">
+            <div class="pane-label">
+              <span>Normal Font S (Regular — Bone White #f5f5f5)</span>
+              <span class="tag tag-normal">Regular</span>
+            </div>
+            <div class="sim-footer-top">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <img
+                  src="/preview-assets/salah-circular-normal-regular-dark.svg"
+                  alt="Normal Font S Dark Regular"
+                  style="height: 34px; width: auto; object-fit: contain;"
+                />
+                <div class="brand-text" style="color: #f1f1f1;">
+                  <span>SALAH / Independent Digital Studio</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Footer Copyright Bar -->
+    <div class="section">
+      <div class="section-title">04 — Footer Bottom Copyright Bar (Micro 16px Scale)</div>
+      <div class="preview-card">
+        <div class="preview-card-header">
+          <span>Component: <code>src/components/layout/Footer.tsx</code> (Micro Size: 16px)</span>
+          <span>Legibility Test</span>
+        </div>
+        <div class="comparison-pane" style="background: #141414;">
+          <div class="sim-footer-bottom">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <img
+                src="/preview-assets/salah-circular-normal-medium-dark.svg"
+                alt="Normal Font S Micro"
+                style="height: 16px; width: auto; object-fit: contain;"
+              />
+              <span>&copy; 2026 Crafted by Mohamed Salauddin (Salah)</span>
+            </div>
+            <span>&uarr; Back to top</span>
+          </div>
+          <p style="font-size: 12px; color: #4ade80; margin-top: 8px;">
+            The normal "S", thin ring, and top dot remain crisp, legible, and uncluttered at 16px.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 5: Multi-Scale & Multi-Background Matrix -->
+    <div class="section">
+      <div class="section-title">05 — Multi-Scale Matrix (Normal Font S)</div>
+      <div class="matrix-grid">
+        
+        <!-- Matrix 1: Light Bone Background -->
+        <div class="matrix-card bone">
+          <div class="matrix-title">Light Bone (#f1f1f1) · Large (80px), Navbar (34px), Bar (16px)</div>
+          <div style="display: flex; gap: 24px; align-items: center;">
+            <img src="/preview-assets/salah-circular-normal-medium-light.svg" style="height: 80px; width: auto;" />
+            <img src="/preview-assets/salah-circular-normal-medium-light.svg" style="height: 34px; width: auto;" />
+            <img src="/preview-assets/salah-circular-normal-medium-light.svg" style="height: 16px; width: auto;" />
+          </div>
+          <div class="swatch-row">
+            <span class="color-dot" style="background: #1a1a1a;"></span> <code>#1a1a1a</code> Graphite
+          </div>
+        </div>
+
+        <!-- Matrix 2: Clean White Background -->
+        <div class="matrix-card white">
+          <div class="matrix-title">Clean White (#ffffff) · Large (80px), Navbar (34px), Bar (16px)</div>
+          <div style="display: flex; gap: 24px; align-items: center;">
+            <img src="/preview-assets/salah-circular-normal-medium-light.svg" style="height: 80px; width: auto;" />
+            <img src="/preview-assets/salah-circular-normal-medium-light.svg" style="height: 34px; width: auto;" />
+            <img src="/preview-assets/salah-circular-normal-medium-light.svg" style="height: 16px; width: auto;" />
+          </div>
+          <div class="swatch-row">
+            <span class="color-dot" style="background: #1a1a1a;"></span> <code>#1a1a1a</code> Graphite
+          </div>
+        </div>
+
+        <!-- Matrix 3: Dark Footer Background -->
+        <div class="matrix-card charcoal">
+          <div class="matrix-title">Dark Footer (#181818) · Large (80px), Footer (34px), Bar (16px)</div>
+          <div style="display: flex; gap: 24px; align-items: center;">
+            <img src="/preview-assets/salah-circular-normal-medium-dark.svg" style="height: 80px; width: auto;" />
+            <img src="/preview-assets/salah-circular-normal-medium-dark.svg" style="height: 34px; width: auto;" />
+            <img src="/preview-assets/salah-circular-normal-medium-dark.svg" style="height: 16px; width: auto;" />
+          </div>
+          <div class="swatch-row">
+            <span class="color-dot" style="background: #f5f5f5;"></span> <code>#f5f5f5</code> Bone White
+          </div>
+        </div>
+
+        <!-- Matrix 4: Deep Black Background -->
+        <div class="matrix-card pitch">
+          <div class="matrix-title">Deep Black (#0e0e0e) · Large (80px), Footer (34px), Bar (16px)</div>
+          <div style="display: flex; gap: 24px; align-items: center;">
+            <img src="/preview-assets/salah-circular-normal-medium-dark.svg" style="height: 80px; width: auto;" />
+            <img src="/preview-assets/salah-circular-normal-medium-dark.svg" style="height: 34px; width: auto;" />
+            <img src="/preview-assets/salah-circular-normal-medium-dark.svg" style="height: 16px; width: auto;" />
+          </div>
+          <div class="swatch-row">
+            <span class="color-dot" style="background: #f5f5f5;"></span> <code>#f5f5f5</code> Bone White
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

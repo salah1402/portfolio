@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <defs>
+    <!-- Dark Brutalist Gradients -->
+    <linearGradient id="iv-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e1014"/>
+      <stop offset="50%" stop-color="#0a0b0d"/>
+      <stop offset="100%" stop-color="#060708"/>
+    </linearGradient>
+    <radialGradient id="iv-volt-glow" cx="80%" cy="35%" r="45%">
+      <stop offset="0%" stop-color="#ccff00" stop-opacity="0.22"/>
+      <stop offset="40%" stop-color="#ccff00" stop-opacity="0.06"/>
+      <stop offset="80%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="iv-steel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#404652"/>
+      <stop offset="25%" stop-color="#2a2e36"/>
+      <stop offset="75%" stop-color="#16181c"/>
+      <stop offset="100%" stop-color="#0d0e12"/>
+    </linearGradient>
+    <linearGradient id="iv-plate-rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#282b33"/>
+      <stop offset="50%" stop-color="#191b20"/>
+      <stop offset="100%" stop-color="#0f1013"/>
+    </linearGradient>
+
+    <!-- Technical Grid Pattern -->
+    <pattern id="arch-grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.05"/>
+      <circle cx="0" cy="0" r="1" fill="#ccff00" fill-opacity="0.3"/>
+    </pattern>
+
+    <!-- Barbell Knurl Pattern -->
+    <pattern id="knurl-pattern" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M 0 0 L 8 8 M 8 0 L 0 8" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.15"/>
+    </pattern>
+  </defs>
+
+  <!-- Industrial Obsidian Canvas -->
+  <rect width="1600" height="1000" fill="url(#iv-bg)"/>
+  <rect width="1600" height="1000" fill="url(#arch-grid)"/>
+
+  <!-- Volt Atmospheric Field -->
+  <circle cx="1200" cy="380" r="500" fill="url(#iv-volt-glow)"/>
+
+  <!-- Brutalist Architecture Guidelines & Coordinate Rulers -->
+  <g stroke="#ffffff" stroke-opacity="0.07" stroke-width="1">
+    <line x1="100" y1="0" x2="100" y2="1000"/>
+    <line x1="750" y1="0" x2="750" y2="1000"/>
+    <line x1="1500" y1="0" x2="1500" y2="1000"/>
+    <line x1="0" y1="160" x2="1600" y2="160"/>
+    <line x1="0" y1="840" x2="1600" y2="840"/>
+  </g>
+
+  <!-- Heavy Eleiko IPF Calibrated Competition Plate Silhouette -->
+  <g transform="translate(1080, 480)">
+    <!-- Outer 450mm Bumper Disc -->
+    <circle cx="0" cy="0" r="280" fill="url(#iv-plate-rim)" stroke="#2b2e36" stroke-width="3"/>
+    <circle cx="0" cy="0" r="274" fill="none" stroke="#ccff00" stroke-width="2" stroke-opacity="0.7"/>
+    <circle cx="0" cy="0" r="240" fill="none" stroke="#22252c" stroke-width="20"/>
+
+    <!-- Inner Chrome Center Hub & 50.4mm Collar -->
+    <circle cx="0" cy="0" r="110" fill="url(#iv-steel)" stroke="#4a505e" stroke-width="2"/>
+    <circle cx="0" cy="0" r="45" fill="#08090b" stroke="#ccff00" stroke-width="1.5"/>
+
+    <!-- Calibrated Disc Markings & Weight Telemetry -->
+    <text x="0" y="-170" text-anchor="middle" font-family="'Anton', 'Impact', sans-serif" font-size="44" font-weight="900" fill="#f4f3ef" letter-spacing="4">
+      ELEIKO
+    </text>
+    <text x="0" y="195" text-anchor="middle" font-family="'Anton', 'Impact', sans-serif" font-size="48" font-weight="900" fill="#ccff00" letter-spacing="2">
+      25 KG
+    </text>
+    <text x="-160" y="10" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#8e94a0" letter-spacing="2" transform="rotate(-90 -160 10)">
+      CALIBRATED ±10G
+    </text>
+    <text x="160" y="10" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#8e94a0" letter-spacing="2" transform="rotate(90 160 10)">
+      IPF CERTIFIED
+    </text>
+
+    <!-- Calibration Plug Screws -->
+    <circle cx="-55" cy="-55" r="7" fill="#1b1c20" stroke="#3c414c" stroke-width="1.5"/>
+    <circle cx="55" cy="55" r="7" fill="#1b1c20" stroke="#3c414c" stroke-width="1.5"/>
+  </g>
+
+  <!-- Heavy Olympic Barbell Shaft & Knurling Extending Across -->
+  <g transform="translate(0, 680)">
+    <!-- Steel Shaft -->
+    <rect x="0" y="0" width="1600" height="28" fill="url(#iv-steel)" stroke="#2a2e36" stroke-width="1"/>
+    <!-- Knurl Grip Sections -->
+    <rect x="220" y="2" width="280" height="24" fill="url(#knurl-pattern)"/>
+    <rect x="560" y="2" width="280" height="24" fill="url(#knurl-pattern)"/>
+    <rect x="900" y="2" width="120" height="24" fill="url(#knurl-pattern)"/>
+    <!-- Center Knurl Ring Marks (810mm Powerlifting Marks) -->
+    <line x1="380" y1="0" x2="380" y2="28" stroke="#ccff00" stroke-width="3"/>
+    <line x1="720" y1="0" x2="720" y2="28" stroke="#ccff00" stroke-width="3"/>
+    <!-- Telemetry Label -->
+    <text x="220" y="-12" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#ccff00" letter-spacing="1.5">
+      ▲ 810MM IPF BENCH GRIP RING · VOLCANO KNURL SPEC
+    </text>
+  </g>
+
+  <!-- GymAware Linear Transducer Real-Time Telemetry HUD -->
+  <g transform="translate(140, 520)">
+    <rect x="0" y="0" width="460" height="110" rx="4" fill="#121418" stroke="#252830" stroke-width="1"/>
+    <rect x="0" y="0" width="6" height="110" fill="#ccff00"/>
+
+    <text x="20" y="26" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#8e94a0" letter-spacing="2">
+      GYMAWARE OPTICAL TELEMETRY
+    </text>
+    <text x="440" y="26" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#ccff00">
+      LIVE FEED // BAY 04
+    </text>
+
+    <!-- Velocity Waveform Curve -->
+    <path d="M 20,80 Q 90,35 150,75 T 270,40 T 360,70 T 430,45" fill="none" stroke="#ccff00" stroke-width="2"/>
+    <circle cx="270" cy="40" r="4" fill="#ccff00"/>
+
+    <text x="20" y="98" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#f4f3ef">
+      V_MEAN: <tspan fill="#ccff00">0.82 m/s</tspan> · V_PEAK: <tspan fill="#ccff00">1.42 m/s</tspan> · OUTPUT: <tspan fill="#f4f3ef">1,840W</tspan>
+    </text>
+  </g>
+
+  <!-- Top Brutalist Header Strip -->
+  <g transform="translate(140, 110)">
+    <rect x="0" y="0" width="300" height="30" fill="#181a20" stroke="#2c303a" stroke-width="1"/>
+    <rect x="0" y="0" width="6" height="30" fill="#ccff00"/>
+    <text x="18" y="19" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#f4f3ef" letter-spacing="2">
+      CASE STUDY 06 · BERLIN MITTE
+    </text>
+    <text x="330" y="20" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600" fill="#8e94a0" letter-spacing="3">
+      HOLZMARKTSTRASSE 18 // 10179 BERLIN
+    </text>
+  </g>
+
+  <!-- Hero Brutalist Typography Block -->
+  <g transform="translate(140, 240)">
+    <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#ccff00" letter-spacing="3">
+      [ BRUTALIST HIGH-PERFORMANCE FITNESS PLATFORM ]
+    </text>
+    <text x="0" y="66" font-family="'Anton', 'Impact', sans-serif" font-size="80" font-weight="900" fill="#f4f3ef" letter-spacing="1">
+      IRONVAULT // STRENGTH
+    </text>
+    <text x="0" y="112" font-family="'Space Grotesk', 'Helvetica Neue', sans-serif" font-size="20" font-weight="400" fill="#8e94a0" letter-spacing="0.5">
+      Uncompromising Compound Engineered for Heavy Loading &amp; Calibrated Output
+    </text>
+  </g>
+
+  <!-- Bottom Pillar Specs & Intake Cap Metrics -->
+  <g transform="translate(140, 890)">
+    <!-- 4 Industrial Telemetry Blocks -->
+    <g font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">
+      <!-- 01 -->
+      <rect x="0" y="0" width="230" height="40" fill="#14161c" stroke="#252932" stroke-width="1"/>
+      <rect x="0" y="0" width="4" height="40" fill="#ccff00"/>
+      <text x="14" y="16" fill="#8e94a0" font-size="9" letter-spacing="1">COMPOUND FOOTPRINT</text>
+      <text x="14" y="32" fill="#f4f3ef" font-size="13">2,400 M² WATERFRONT</text>
+
+      <!-- 02 -->
+      <rect x="250" y="0" width="220" height="40" fill="#14161c" stroke="#252932" stroke-width="1"/>
+      <rect x="250" y="0" width="4" height="40" fill="#ccff00"/>
+      <text x="264" y="16" fill="#8e94a0" font-size="9" letter-spacing="1">EQUIPMENT RATIO</text>
+      <text x="264" y="32" fill="#f4f3ef" font-size="13">1:1 ELEIKO CALIBRATED</text>
+
+      <!-- 03 -->
+      <rect x="490" y="0" width="210" height="40" fill="#14161c" stroke="#252932" stroke-width="1"/>
+      <rect x="490" y="0" width="4" height="40" fill="#ccff00"/>
+      <text x="504" y="16" fill="#8e94a0" font-size="9" letter-spacing="1">MEMBERSHIP CAP</text>
+      <text x="504" y="32" fill="#ccff00" font-size="13">120 ATHLETES MAX</text>
+
+      <!-- 04 -->
+      <rect x="720" y="0" width="210" height="40" fill="#14161c" stroke="#252932" stroke-width="1"/>
+      <rect x="720" y="0" width="4" height="40" fill="#ccff00"/>
+      <text x="734" y="16" fill="#8e94a0" font-size="9" letter-spacing="1">INTAKE PROTOCOL</text>
+      <text x="734" y="32" fill="#f4f3ef" font-size="13">&lt; 24H SCREENING SLA</text>
+    </g>
+
+    <!-- Right Live Status Tag -->
+    <g transform="translate(1080, 12)" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#8e94a0">
+      <text x="0" y="14" letter-spacing="1.5">INTAKE: <tspan fill="#ccff00">STATUS CLOSED · CAP ATTAINED</tspan></text>
+    </g>
+  </g>
+
+  <!-- Razor Hairline Framing -->
+  <rect x="30" y="30" width="1540" height="940" fill="none" stroke="#2b2e36" stroke-width="1"/>
+</svg>
