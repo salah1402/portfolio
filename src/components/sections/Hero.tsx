@@ -83,53 +83,36 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
       <HeroCanvas />
 
       {/* Top Credentials & Availability */}
-      {/* Desktop Horizontal Strip (sm+) */}
-      <div className="hidden sm:inline-flex relative z-10 flex-wrap items-center justify-center gap-x-3 gap-y-1.5 px-5 py-2 rounded-full border border-[#2b2b2b]/15 bg-[#fafafa]/90 backdrop-blur-xs mb-8 sm:mb-12 select-none shadow-[0_2px_8px_rgba(0,0,0,0.02)] max-w-full">
-        <span className="inline-flex items-center gap-2 font-mono text-[11.5px] uppercase tracking-[0.14em] text-[#2b2b2b] font-medium">
+      {/* Top Status & Availability Ribbon — streamlined single-line pill */}
+      <div className="inline-flex relative z-10 items-center justify-center gap-1.5 sm:gap-3 px-3 sm:px-5 py-1 sm:py-2 rounded-full border border-[#2b2b2b]/15 bg-[#fafafa]/90 backdrop-blur-xs mb-6 sm:mb-10 select-none shadow-[0_2px_8px_rgba(0,0,0,0.02)] max-w-[94%]">
+        <span className="inline-flex items-center gap-1.5 sm:gap-2 font-mono text-[9px] sm:text-[11.5px] uppercase tracking-[0.08em] sm:tracking-[0.14em] text-[#2b2b2b] font-medium whitespace-nowrap">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fc4778] opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#fc4778]" />
           </span>
           <span>Independent Digital Studio</span>
-          <span className="text-[#2b2b2b]/30">·</span>
-          <span className="tabular-nums text-[#2b2b2b]/70 font-normal">3D Web Experiences</span>
         </span>
         <span className="text-[#2b2b2b]/25" aria-hidden="true">/</span>
-        <span className="font-mono text-[11.5px] uppercase tracking-[0.12em] text-[#2b2b2b] tabular-nums flex items-center gap-2">
-          <span>Creative Development</span>
-          <span className="text-[#2b2b2b]/30">·</span>
-          <span>Interactive Design</span>
-          <span className="text-[#2b2b2b]/30">·</span>
+        <span className="font-mono text-[9px] sm:text-[11.5px] uppercase tracking-[0.06em] sm:tracking-[0.12em] text-[#2b2b2b] tabular-nums flex items-center whitespace-nowrap">
           <span><strong className="text-[#fc4778] font-bold">Now Open for Projects</strong></span>
         </span>
       </div>
 
-      {/* Mobile Borderless Editorial Credential Ticker (< sm) — strictly matching thinkingods.com */}
-      <div className="sm:hidden relative z-10 w-full pt-1 pb-1 select-none">
-        <p className="font-mono text-[10.5px] uppercase tracking-[0.13em] text-[#2b2b2b] text-center leading-relaxed m-0">
-          <strong className="text-[#fc4778] font-bold">2+</strong> Years experience{' '}
-          <span className="text-[#2b2b2b]/30">·</span>{' '}
-          <strong className="text-[#fc4778] font-bold">5</strong> Flagship Releases{' '}
-          <span className="text-[#2b2b2b]/30">·</span>{' '}
-          <strong className="text-[#fc4778] font-bold">+210%</strong> Inquiries Uplift
-        </p>
-      </div>
-
       {/* Middle Core: Monumental Display Headline & Editorial Subtitle */}
-      <div className="relative z-10 flex flex-col items-center my-auto py-2.5 sm:py-0 w-full">
-        <h1 className="display-hero text-[clamp(34px,9.2vw,52px)] sm:text-[clamp(44px,8.2vw,140px)] tracking-[-0.04em] sm:tracking-[-0.045em] leading-[0.90] sm:leading-[0.88] text-[#1a1a1a] max-w-xl sm:max-w-[15ch] mx-auto select-none">
+      <div className="relative z-10 flex flex-col items-center my-auto py-4 sm:py-2 w-full">
+        <h1 className="display-hero text-[clamp(37px,10vw,56px)] sm:text-[clamp(44px,8.2vw,140px)] tracking-[-0.04em] sm:tracking-[-0.045em] leading-[0.92] sm:leading-[0.88] text-[#1a1a1a] max-w-xl sm:max-w-[15ch] mx-auto select-none">
           Crafting 3D websites<br className="inline" />{' '}
           and digital experiences<br className="inline" />{' '}
           worth remembering.
         </h1>
 
-        <p className="mt-3.5 sm:mt-11 max-w-[36ch] sm:max-w-[48ch] font-sans text-[14px] sm:text-[clamp(15px,1.15vw,18px)] text-[#2b2b2b]/80 leading-[1.55] sm:leading-[1.65] mx-auto select-none text-pretty">
-          Creative front-end developer and 3D web specialist with 2+ years experience, partnering with ambitious startups and global agencies across industries.
+        <p className="mt-4 sm:mt-10 max-w-[38ch] sm:max-w-[48ch] font-sans text-[15px] sm:text-[clamp(15.5px,1.2vw,18px)] text-[#2b2b2b]/85 leading-[1.6] sm:leading-[1.65] mx-auto select-none text-pretty">
+          Creative front-end developer and 3D web specialist with 2+ Years experience, partnering with ambitious startups and global agencies across industries.
         </p>
       </div>
 
       {/* Bottom Area: Action Buttons & Client Trust Strip */}
-      <div className="relative z-10 w-full flex flex-col items-center gap-3.5 sm:gap-6 pt-1 sm:pt-2">
+      <div className="relative z-10 w-full flex flex-col items-center gap-4 sm:gap-6 pt-3 sm:pt-4">
         {/* Dual Technical Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3.5 w-full max-w-[320px] sm:max-w-none mx-auto">
           <button
