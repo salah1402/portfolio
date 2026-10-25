@@ -66,7 +66,7 @@ export const TestimonialSlider: React.FC = () => {
         backgroundImage: 'radial-gradient(rgba(241,241,241,.10) 1px, transparent 1px)',
         backgroundSize: '5px 5px',
       }}
-      className="rounded-[20px] bg-[#1b1b1b] text-[#f1f1f1] p-8 sm:p-12 flex flex-col justify-between shadow-md min-h-[420px] sm:min-h-[480px] w-full"
+      className="rounded-[20px] bg-[#1b1b1b] text-[#f1f1f1] p-6 sm:p-12 flex flex-col justify-between shadow-md min-h-[420px] sm:min-h-[480px] w-full"
     >
       {/* Top Header / Indicators */}
       <div className="flex items-center justify-between pb-4">
@@ -80,7 +80,7 @@ export const TestimonialSlider: React.FC = () => {
             type="button"
             onClick={prevSlide}
             aria-label="Previous testimonial"
-            className="p-2 rounded-full border border-[#f1f1f1]/20 bg-[#f1f1f1]/5 text-[#f1f1f1] hover:border-[#fc4778] hover:text-[#fc4778] transition-colors"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full border border-[#f1f1f1]/20 bg-[#f1f1f1]/5 text-[#f1f1f1] hover:border-[#fc4778] hover:text-[#fc4778] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fc4778]"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -88,7 +88,7 @@ export const TestimonialSlider: React.FC = () => {
             type="button"
             onClick={nextSlide}
             aria-label="Next testimonial"
-            className="p-2 rounded-full border border-[#f1f1f1]/20 bg-[#f1f1f1]/5 text-[#f1f1f1] hover:border-[#fc4778] hover:text-[#fc4778] transition-colors"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full border border-[#f1f1f1]/20 bg-[#f1f1f1]/5 text-[#f1f1f1] hover:border-[#fc4778] hover:text-[#fc4778] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fc4778]"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -118,19 +118,23 @@ export const TestimonialSlider: React.FC = () => {
       </div>
 
       {/* Dot Indicators */}
-      <div className="flex items-center gap-2.5 pt-4">
+      <div className="flex items-center gap-2 pt-4">
         {TESTIMONIALS.map((_, idx) => (
           <button
             key={idx}
             type="button"
             onClick={() => setActiveIndex(idx)}
             aria-label={`Go to testimonial ${idx + 1}`}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              activeIndex === idx
-                ? 'w-6 bg-[#f1f1f1]'
-                : 'w-2 bg-[#f1f1f1]/30 hover:bg-[#f1f1f1]/50'
-            }`}
-          />
+            className="p-1 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#fc4778] rounded-full"
+          >
+            <span
+              className={`block h-2 rounded-full transition-all duration-300 ${
+                activeIndex === idx
+                  ? 'w-6 bg-[#f1f1f1]'
+                  : 'w-2 bg-[#f1f1f1]/30 hover:bg-[#f1f1f1]/50'
+              }`}
+            />
+          </button>
         ))}
       </div>
     </div>

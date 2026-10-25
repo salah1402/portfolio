@@ -45,6 +45,17 @@ export const Navbar: React.FC<NavbarProps> = ({
     setIsMobileMenuOpen(false);
   }, [location.pathname, location.hash]);
 
+  // Handle ESC key to close mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isMobileMenuOpen]);
+
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -158,20 +169,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Mobile Header Controls */}
-        <div className="flex items-center gap-2.5 md:hidden">
-          <button
-            type="button"
-            onClick={onOpenLeadModal}
-            className="group inline-flex items-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2b2b2b] text-[#f5f5f5] px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider font-medium rounded-[3px] transition-colors"
-          >
-            <span>Start</span>
-            <ArrowUpRight className="w-3 h-3 text-[#f5f5f5]/80" />
-          </button>
+        {/* Mobile Header Controls — Clean, uncrowded layout with primary CTA in drawer */}
+        <div className="flex items-center md:hidden">
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-1.5 rounded-sm text-[#1a1a1a] hover:bg-[#1a1a1a]/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fc4778]"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-sm text-[#1a1a1a] hover:bg-[#1a1a1a]/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fc4778]"
             aria-expanded={isMobileMenuOpen}
             aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
@@ -182,8 +185,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 top-[54px] sm:top-[58px] z-50 bg-[#f1f1f1] flex flex-col justify-between p-6 md:hidden animate-in fade-in slide-in-from-top-4 duration-200 border-t border-[#1a1a1a]/10">
-          <div className="flex flex-col gap-4 pt-4">
+        <div className="fixed inset-0 top-[54px] sm:top-[58px] z-50 bg-[#f1f1f1] flex flex-col justify-between p-6 md:hidden animate-in fade-in slide-in-from-top-4 duration-200 border-t border-[#1a1a1a]/10 overflow-y-auto">
+          <div className="flex flex-col gap-3 pt-2">
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#1a1a1a]/40 pb-2 border-b border-[#1a1a1a]/10">
               Navigation
             </span>
@@ -198,7 +201,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   key={item.label}
                   to={item.href}
                   onClick={(e) => handleNavClick(e, item)}
-                  className={`font-display text-2xl font-normal py-2.5 transition-colors flex items-center justify-between border-b border-[#1a1a1a]/5 ${
+                  className={`font-display text-2xl font-normal py-3 min-h-[48px] transition-colors flex items-center justify-between border-b border-[#1a1a1a]/5 ${
                     isActive ? 'text-[#1a1a1a] font-medium' : 'text-[#1a1a1a]/70 hover:text-[#fc4778]'
                   }`}
                 >
@@ -214,14 +217,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </div>
 
-          <div className="flex flex-col gap-4 pb-8">
+          <div className="flex flex-col gap-4 pt-6 pb-8">
             <button
               type="button"
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 onOpenLeadModal?.();
               }}
-              className="group flex items-center justify-center gap-2 bg-[#1a1a1a] hover:bg-[#2b2b2b] text-[#f5f5f5] w-full py-4 text-xs font-mono uppercase tracking-[0.14em] font-medium rounded-[3px] transition-colors"
+              className="group flex items-center justify-center gap-2 bg-[#1a1a1a] hover:bg-[#2b2b2b] text-[#f5f5f5] w-full py-4 text-xs font-mono uppercase tracking-[0.14em] font-medium rounded-[3px] transition-colors min-h-[48px]"
             >
               <span>Start a conversation</span>
               <ArrowUpRight className="w-4 h-4 text-[#f5f5f5]/80 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

@@ -39,13 +39,13 @@ export const FaqAccordion: React.FC = () => {
             const isOpen = openId === faq.id;
 
             return (
-              <div key={faq.id} className="py-6 sm:py-7">
+              <div key={faq.id} className="py-4 sm:py-6">
                 <button
                   type="button"
                   onClick={() => toggleFaq(faq.id)}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${faq.id}`}
-                  className="w-full flex items-center justify-between text-left focus:outline-none group py-1"
+                  className="w-full min-h-[48px] py-2 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fc4778] rounded-sm group cursor-pointer"
                 >
                   <span className="font-display font-medium text-[clamp(18px,1.8vw,26px)] tracking-[-0.025em] text-[#2b2b2b] group-hover:text-[#fc4778] transition-colors pr-6">
                     {faq.question}

@@ -253,7 +253,7 @@ const compileShader = (gl: WebGL2RenderingContext, type: number, source: string)
 
 const ROOT =
   'relative h-full w-full min-h-[460px] overflow-hidden outline-none @container text-[var(--infinite-menu-text)] [-webkit-tap-highlight-color:transparent] focus-visible:shadow-[inset_0_0_0_2px_var(--infinite-menu-text)] select-none';
-const CANVAS = 'absolute inset-0 block h-full w-full cursor-grab touch-none active:cursor-grabbing';
+const CANVAS = 'absolute inset-0 block h-full w-full cursor-grab touch-pan-y active:cursor-grabbing';
 const LAYER = 'group pointer-events-none absolute inset-0';
 const CUSTOM = 'pointer-events-none absolute inset-0';
 const MOTION =
@@ -490,10 +490,14 @@ export const InfiniteMenu: React.FC<InfiniteMenuProps> = ({
       id: -1,
       x: 0,
       y: 0,
+      startX: 0,
+      startY: 0,
       dx: 0,
       dy: 0,
       moved: 0,
-      start: 0
+      start: 0,
+      captured: false,
+      isTouch: false
     };
 
     const state = {
@@ -988,19 +992,31 @@ export const InfiniteMenu: React.FC<InfiniteMenuProps> = ({
 
     const onPointerDown = (event: PointerEvent) => {
       if (event.pointerType === 'mouse' && event.button !== 0) return;
-      try {
-        canvas.setPointerCapture?.(event.pointerId);
-      } catch {
-        // Fallback for non-supporting environments
-      }
+      const isTouch = event.pointerType === 'touch';
+      
       drag.active = true;
       drag.id = event.pointerId;
       drag.x = event.clientX;
       drag.y = event.clientY;
+      drag.startX = event.clientX;
+      drag.startY = event.clientY;
       drag.dx = 0;
       drag.dy = 0;
       drag.moved = 0;
       drag.start = performance.now();
+      drag.captured = false;
+      drag.isTouch = isTouch;
+
+      // On mouse, capture immediately. On touch, defer until horizontal drag direction is confirmed
+      if (!isTouch) {
+        try {
+          canvas.setPointerCapture?.(event.pointerId);
+          drag.captured = true;
+        } catch {
+          // Fallback
+        }
+      }
+
       state.target = -1;
       wake();
     };
@@ -1009,6 +1025,29 @@ export const InfiniteMenu: React.FC<InfiniteMenuProps> = ({
       if (!drag.active || event.pointerId !== drag.id) return;
       const dx = event.clientX - drag.x;
       const dy = event.clientY - drag.y;
+
+      // On touch, detect if user is scrolling page vertically vs rotating sphere horizontally
+      if (drag.isTouch && !drag.captured) {
+        const totalDx = Math.abs(event.clientX - drag.startX);
+        const totalDy = Math.abs(event.clientY - drag.startY);
+
+        // If swipe is mostly vertical, let native page scroll proceed
+        if (totalDy > 8 && totalDy > totalDx) {
+          drag.active = false;
+          return;
+        }
+
+        // If swipe is mostly horizontal, capture pointer to smoothly spin sphere
+        if (totalDx > 8 && totalDx >= totalDy) {
+          drag.captured = true;
+          try {
+            canvas.setPointerCapture?.(event.pointerId);
+          } catch {
+            // Fallback
+          }
+        }
+      }
+
       drag.x = event.clientX;
       drag.y = event.clientY;
       drag.dx += dx;
@@ -1020,11 +1059,15 @@ export const InfiniteMenu: React.FC<InfiniteMenuProps> = ({
     const onPointerUp = (event: PointerEvent) => {
       if (!drag.active || event.pointerId !== drag.id) return;
       drag.active = false;
-      try {
-        canvas.releasePointerCapture?.(event.pointerId);
-      } catch {
-        // Fallback
+      if (drag.captured) {
+        try {
+          canvas.releasePointerCapture?.(event.pointerId);
+        } catch {
+          // Fallback
+        }
       }
+      drag.captured = false;
+
       if (drag.moved < 6 && performance.now() - drag.start < 450) {
         const index = pickTile(event.clientX, event.clientY);
         if (index >= 0 && index === state.front) activate(index);
@@ -1071,7 +1114,8 @@ export const InfiniteMenu: React.FC<InfiniteMenuProps> = ({
     };
 
     const resize = () => {
-      const dpr = Math.min(typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1, 2);
+      const maxDpr = typeof window !== 'undefined' && window.innerWidth < 768 ? 1.5 : 2;
+      const dpr = Math.min(typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1, maxDpr);
       state.width = Math.max(1, root.clientWidth);
       state.height = Math.max(1, root.clientHeight);
       canvas.width = Math.round(state.width * dpr);

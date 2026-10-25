@@ -110,7 +110,7 @@ export const Process: React.FC = () => {
   }, []);
 
   return (
-    <section id="process" className="relative z-10 w-full pt-8 sm:pt-12 pb-20 sm:pb-28 px-4 sm:px-6 lg:px-10 border-b border-[#2b2b2b]/10 bg-white">
+    <section id="process" className="relative z-10 w-full pt-14 sm:pt-16 pb-20 sm:pb-28 px-4 sm:px-6 lg:px-10 border-b border-[#2b2b2b]/10 bg-white">
       <div className="max-w-[1600px] mx-auto flex flex-col gap-12 sm:gap-16">
         {/* Section Header */}
         <div className="max-w-4xl flex flex-col gap-3">

@@ -40,14 +40,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLeadModal }) => {
             <button
               type="button"
               onClick={onOpenLeadModal}
-              className="btn btn--solid bg-[#f1f1f1] text-[#181818] hover:bg-white hover:text-black py-[12px] px-[22px] text-xs tracking-[0.12em] font-medium cursor-pointer"
+              className="btn btn--solid bg-[#f1f1f1] text-[#181818] hover:bg-white hover:text-black py-[12px] px-[22px] text-xs tracking-[0.12em] font-medium cursor-pointer min-h-[44px]"
             >
               <span>Start a conversation</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
             <a
               href="mailto:salauddin142008@gmail.com"
-              className="btn text-[#f1f1f1] border-[#f1f1f1]/25 hover:border-[#f1f1f1] py-[12px] px-[22px] text-xs tracking-[0.12em] font-medium"
+              className="btn text-[#f1f1f1] border-[#f1f1f1]/25 hover:border-[#f1f1f1] py-[12px] px-[22px] text-xs tracking-[0.12em] font-medium min-h-[44px]"
             >
               salauddin142008@gmail.com
             </a>

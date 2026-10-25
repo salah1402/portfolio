@@ -188,11 +188,11 @@ export const PricingCalculator: React.FC<PricingCalculatorSectionProps> = ({ onO
             </div>
 
             {/* Mode Switcher */}
-            <div className="flex items-center p-1 rounded-full border border-[#2b2b2b]/15 bg-[#fafafa]/80 backdrop-blur-xs">
+            <div className="flex items-center p-1 rounded-full border border-[#2b2b2b]/15 bg-[#fafafa]/80 backdrop-blur-xs max-w-full">
               <button
                 type="button"
                 onClick={() => setActiveTab('single')}
-                className={`px-4 py-1.5 rounded-full font-mono text-[11px] uppercase tracking-wider font-medium tabular-nums transition-all ${
+                className={`px-3 sm:px-4 py-1.5 rounded-full font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-medium tabular-nums transition-all ${
                   activeTab === 'single'
                     ? 'bg-[#2b2b2b] text-[#f1f1f1] shadow-xs'
                     : 'text-[#2b2b2b]/65 hover:text-[#2b2b2b]'
@@ -203,7 +203,7 @@ export const PricingCalculator: React.FC<PricingCalculatorSectionProps> = ({ onO
               <button
                 type="button"
                 onClick={() => setActiveTab('recurring')}
-                className={`px-4 py-1.5 rounded-full font-mono text-[11px] uppercase tracking-wider font-medium tabular-nums transition-all ${
+                className={`px-3 sm:px-4 py-1.5 rounded-full font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-medium tabular-nums transition-all ${
                   activeTab === 'recurring'
                     ? 'bg-[#2b2b2b] text-[#f1f1f1] shadow-xs'
                     : 'text-[#2b2b2b]/65 hover:text-[#2b2b2b]'
@@ -451,7 +451,7 @@ export const PricingCalculator: React.FC<PricingCalculatorSectionProps> = ({ onO
                     <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/60 font-medium">
                       Estimated Investment
                     </span>
-                    <div className="font-display font-medium text-[clamp(38px,3.8vw,56px)] text-[#2b2b2b] tracking-tight leading-none tabular-nums transition-all duration-300">
+                    <div className="font-display font-medium text-[clamp(32px,3.8vw,56px)] text-[#2b2b2b] tracking-tight leading-none tabular-nums transition-all duration-300 break-words">
                       {getFormattedAnimatedPrice()}
                     </div>
                   </div>

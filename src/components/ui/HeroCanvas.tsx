@@ -138,7 +138,7 @@ export const HeroCanvas: React.FC<{ className?: string }> = ({ className = '' })
   return (
     <canvas
       ref={canvasRef}
-      className={`absolute inset-0 w-full h-full pointer-events-none ${className}`}
+      className={`absolute inset-0 w-full h-full pointer-events-none opacity-60 sm:opacity-100 transition-opacity duration-300 ${className}`}
       aria-hidden="true"
     />
   );

@@ -48,6 +48,11 @@
     border-color: var(--hair-border);
   }
 
+  html {
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
     margin: 0;
     background-color: var(--bg);
@@ -60,10 +65,11 @@
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     overflow-x: clip;
+    min-width: 0;
   }
 }
 
-/* Luxury Paper Canvas Stipple Texture */
+/* Luxury Paper Canvas Stipple Texture matching thinkingods.com */
 .paper-canvas {
   background-color: #f1f1f1;
   background-image: radial-gradient(rgba(43, 43, 43, 0.14) 1px, transparent 1px);

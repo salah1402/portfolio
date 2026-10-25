@@ -47,14 +47,14 @@ export const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
       aria-labelledby="modal-lead-title"
     >
       <div
-        className="relative w-full max-w-lg bg-[#f1f1f1] border border-[#e2e2e2] rounded-2xl shadow-2xl p-6 sm:p-8 overflow-hidden"
+        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-[#f1f1f1] border border-[#e2e2e2] rounded-2xl shadow-2xl p-6 sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full text-[#1a1a1a]/60 hover:text-[#1a1a1a] hover:bg-[#1a1a1a]/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fc4778]"
+          className="absolute top-5 right-5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-[#1a1a1a]/60 hover:text-[#1a1a1a] hover:bg-[#1a1a1a]/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fc4778]"
           aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
@@ -84,14 +84,14 @@ export const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
             href="mailto:salauddin142008@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20Salah"
             className="flex items-center justify-between p-4 rounded-xl border border-[#e2e2e2] bg-[#fafafa] hover:border-[#1a1a1a]/30 transition-all group"
           >
-            <div className="flex items-center gap-3">
-              <Mail className="w-5 h-5 text-[#fc4778]" />
-              <div>
+            <div className="flex items-center gap-3 min-w-0">
+              <Mail className="w-5 h-5 text-[#fc4778] shrink-0" />
+              <div className="min-w-0">
                 <div className="font-display font-semibold text-sm text-[#1a1a1a] tracking-tight">Send an Email</div>
-                <div className="font-mono text-xs text-[#1a1a1a]/65 tabular-nums font-medium">salauddin142008@gmail.com</div>
+                <div className="font-mono text-xs text-[#1a1a1a]/65 tabular-nums font-medium break-all sm:break-normal">salauddin142008@gmail.com</div>
               </div>
             </div>
-            <ArrowUpRight className="w-4 h-4 text-[#1a1a1a]/40 group-hover:text-[#fc4778] transition-colors" />
+            <ArrowUpRight className="w-4 h-4 text-[#1a1a1a]/40 group-hover:text-[#fc4778] transition-colors shrink-0 ml-2" />
           </a>
 
           <a
@@ -100,21 +100,21 @@ export const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
             rel="noopener noreferrer"
             className="flex items-center justify-between p-4 rounded-xl border border-[#e2e2e2] bg-[#fafafa] hover:border-[#1a1a1a]/30 transition-all group"
           >
-            <div className="flex items-center gap-3">
-              <Phone className="w-5 h-5 text-[#fc4778]" />
-              <div>
+            <div className="flex items-center gap-3 min-w-0">
+              <Phone className="w-5 h-5 text-[#fc4778] shrink-0" />
+              <div className="min-w-0">
                 <div className="font-display font-semibold text-sm text-[#1a1a1a] tracking-tight">WhatsApp Direct</div>
                 <div className="font-mono text-xs text-[#1a1a1a]/65 tabular-nums font-medium">+91 97900 94500</div>
               </div>
             </div>
-            <ArrowUpRight className="w-4 h-4 text-[#1a1a1a]/40 group-hover:text-[#fc4778] transition-colors" />
+            <ArrowUpRight className="w-4 h-4 text-[#1a1a1a]/40 group-hover:text-[#fc4778] transition-colors shrink-0 ml-2" />
           </a>
         </div>
 
         <button
           type="button"
           onClick={onClose}
-          className="w-full py-3.5 rounded-full bg-[#1a1a1a] text-[#f1f1f1] font-mono text-xs uppercase tracking-wider hover:bg-[#fc4778] hover:text-[#1a1a1a] transition-colors"
+          className="w-full min-h-[44px] py-3.5 rounded-full bg-[#1a1a1a] text-[#f1f1f1] font-mono text-xs uppercase tracking-wider hover:bg-[#fc4778] hover:text-[#1a1a1a] transition-colors cursor-pointer"
         >
           Return to Studio
         </button>
