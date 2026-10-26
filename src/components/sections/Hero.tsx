@@ -34,19 +34,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLeadModal }) => {
           const h = hero.offsetHeight || window.innerHeight;
           const p = Math.min(Math.max(y / h, 0), 1);
 
-          if (window.innerWidth > 760) {
-            const ty = (-p * h * 0.16).toFixed(1);
-            const scale = (1 - p * 0.03).toFixed(4);
-            hero.style.transform = `translate3d(0, ${ty}px, 0) scale(${scale})`;
-            const radius = (28 + p * 14).toFixed(0);
-            hero.style.borderRadius = `0 0 ${radius}px ${radius}px`;
-            const shadowOpacity = (0.08 + p * 0.08).toFixed(2);
-            hero.style.boxShadow = `0 ${20 + p * 16}px ${50 + p * 30}px rgba(0, 0, 0, ${shadowOpacity})`;
-          } else {
-            hero.style.transform = 'none';
-            hero.style.borderRadius = '0 0 24px 24px';
-            hero.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.06)';
-          }
+          const isMobile = window.innerWidth <= 760;
+          const ty = (-p * h * (isMobile ? 0.12 : 0.16)).toFixed(1);
+          const scale = (1 - p * (isMobile ? 0.04 : 0.03)).toFixed(4);
+          const baseRadius = isMobile ? 24 : 28;
+          const extraRadius = isMobile ? 16 : 14;
+          const radius = (baseRadius + p * extraRadius).toFixed(0);
+          const shadowY = isMobile ? (14 + p * 16).toFixed(0) : (20 + p * 16).toFixed(0);
+          const shadowBlur = isMobile ? (30 + p * 25).toFixed(0) : (50 + p * 30).toFixed(0);
+          const shadowOpacity = (0.08 + p * (isMobile ? 0.10 : 0.08)).toFixed(2);
+
+          hero.style.transform = `translate3d(0, ${ty}px, 0) scale(${scale})`;
+          hero.style.borderRadius = `0 0 ${radius}px ${radius}px`;
+          hero.style.boxShadow = `0 ${shadowY}px ${shadowBlur}px rgba(0, 0, 0, ${shadowOpacity})`;
+
           ticking = false;
         });
         ticking = true;
