@@ -1252,29 +1252,55 @@ export const InfiniteMenu: React.FC<InfiniteMenuProps> = ({
             data-moving={moving ? 'true' : undefined}
             data-layout={layout}
           >
-            {/* Active Project Title */}
-            {current.title && (
-              <div className={TITLE}>
-                <h2 className="m-0 text-inherit leading-[1.02] font-semibold tracking-[-0.035em] font-display text-balance">
-                  {current.title}
-                </h2>
-              </div>
-            )}
-
-            {/* Project Category & Editorial Description */}
-            {(current.description || current.category) && (
-              <div className={DESCRIPTION}>
+            {layout === 'stacked' ? (
+              /* Mobile / Stacked Layout: Unified Non-Overlapping Editorial Card */
+              <div
+                className={`absolute bottom-4 left-4 right-[80px] flex flex-col justify-end text-left pointer-events-none select-none ${MOTION} group-data-[moving=true]:translate-y-2`}
+              >
                 {current.category && (
-                  <span className="block text-[11px] uppercase tracking-[0.14em] font-mono text-[#fc4778] mb-1.5 font-semibold">
+                  <span className="block text-[10.5px] uppercase tracking-[0.14em] font-mono text-[#fc4778] mb-1 font-semibold line-clamp-1">
                     {current.category}
                   </span>
                 )}
+                {current.title && (
+                  <h2 className="m-0 text-inherit leading-[1.08] font-semibold tracking-[-0.03em] font-display text-[clamp(1.15rem,5cqw,1.5rem)] mb-1 text-balance">
+                    {current.title}
+                  </h2>
+                )}
                 {current.description && (
-                  <p className="m-0 font-sans leading-[1.55] text-inherit">
+                  <p className="m-0 font-sans leading-[1.45] text-inherit text-xs opacity-75 line-clamp-2">
                     {current.description}
                   </p>
                 )}
               </div>
+            ) : (
+              /* Desktop / Side Layout: Title on Left, Description on Right */
+              <>
+                {/* Active Project Title */}
+                {current.title && (
+                  <div className={TITLE}>
+                    <h2 className="m-0 text-inherit leading-[1.02] font-semibold tracking-[-0.035em] font-display text-balance">
+                      {current.title}
+                    </h2>
+                  </div>
+                )}
+
+                {/* Project Category & Editorial Description */}
+                {(current.description || current.category) && (
+                  <div className={DESCRIPTION}>
+                    {current.category && (
+                      <span className="block text-[11px] uppercase tracking-[0.14em] font-mono text-[#fc4778] mb-1.5 font-semibold">
+                        {current.category}
+                      </span>
+                    )}
+                    {current.description && (
+                      <p className="m-0 font-sans leading-[1.55] text-inherit">
+                        {current.description}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </>
             )}
 
             {/* Circular Signature Hot Pink Action Button */}
