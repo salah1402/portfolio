@@ -149,7 +149,7 @@ export const PricingCalculator: React.FC<PricingCalculatorSectionProps> = ({ onO
 
   return (
     <section id="pricing" className="w-full py-20 sm:py-28 px-4 sm:px-6 lg:px-12 border-b border-[#2b2b2b]/10 bg-[#f1f1f1]">
-      <div className="max-w-[1520px] mx-auto flex flex-col gap-12 sm:gap-16">
+      <div className="max-w-[1520px] mx-auto flex flex-col gap-10 sm:gap-16">
         
         {/* Section Header: Editorial & Minimal */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#2b2b2b]/15">
@@ -215,303 +215,495 @@ export const PricingCalculator: React.FC<PricingCalculatorSectionProps> = ({ onO
           </div>
         </div>
 
-        {/* TAB 1: Single Project Floating Studio Instrument */}
+        {/* TAB 1: Single Project Studio Instrument */}
         {activeTab === 'single' && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
-            {/* Left Column: Interactive Configuration Sliders & Selectors */}
-            <div className="lg:col-span-7 flex flex-col gap-10">
-              
-              {/* Step 1: Project Type Selection */}
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-semibold text-[#fc4778] tabular-nums">01</span>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/70 font-semibold">
-                      Project Type
-                    </span>
-                  </div>
-                  <span className="font-mono text-[11px] text-[#2b2b2b]/55 font-medium tabular-nums">
-                    Starting: {calcState.currency === 'INR' ? `₹${PROJECT_TYPES[calcState.projectType].basePriceINR.toLocaleString('en-IN')}` : calcState.currency === 'USD' ? `$${Math.round(PROJECT_TYPES[calcState.projectType].basePriceINR / 85)}` : `€${Math.round(PROJECT_TYPES[calcState.projectType].basePriceINR / 92)}`}
-                  </span>
-                </div>
-
-                {/* Dropdown Selector */}
-                <div className="relative">
-                  <select
-                    value={calcState.projectType}
-                    onChange={(e) => setCalcState({ ...calcState, projectType: e.target.value as ProjectTypeId })}
-                    className="w-full bg-[#fafafa] border border-[#2b2b2b]/15 hover:border-[#2b2b2b]/35 focus:border-[#2b2b2b] rounded-[10px] px-4 py-3.5 font-sans text-base text-[#2b2b2b] focus:outline-none transition-colors appearance-none cursor-pointer"
-                  >
-                    {Object.values(PROJECT_TYPES).map((t) => (
-                      <option key={t.id} value={t.id}>
-                        {t.label} &mdash; Starting at ₹{t.basePriceINR.toLocaleString('en-IN')}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#2b2b2b]/60">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
-                </div>
-                <p className="font-sans text-xs text-[#2b2b2b]/65 m-0 leading-normal">
-                  {PROJECT_TYPES[calcState.projectType].description} ({PROJECT_TYPES[calcState.projectType].includedPages})
-                </p>
-              </div>
-
-              {/* Step 2: Project Size (Tactile Horizontal Slider) */}
-              <div className="flex flex-col gap-4 pt-4 border-t border-[#2b2b2b]/10">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-semibold text-[#fc4778] tabular-nums">02</span>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/70 font-semibold">
-                      Project Size
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-display text-sm font-semibold text-[#2b2b2b]">
-                      {PAGE_COUNTS[calcState.pageCount].label}
-                    </span>
-                    {PAGE_COUNTS[calcState.pageCount].timelineDeltaWeeks > 0 && (
-                      <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#2b2b2b]/5 text-[#2b2b2b]/70 font-medium">
-                        +{PAGE_COUNTS[calcState.pageCount].timelineDeltaWeeks}w
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Tactile Range Slider */}
-                <div className="flex flex-col gap-2">
-                  <input
-                    type="range"
-                    min="0"
-                    max="3"
-                    step="1"
-                    value={pageIndex}
-                    onChange={(e) => setCalcState({ ...calcState, pageCount: PAGE_KEYS[parseInt(e.target.value, 10)] })}
-                    className="w-full accent-[#2b2b2b] h-1.5 bg-[#2b2b2b]/15 rounded-lg appearance-none cursor-pointer"
-                    aria-label="Project Size Slider"
-                  />
-                  {/* Step Ticks */}
-                  <div className="flex justify-between items-center text-[11px] font-mono text-[#2b2b2b]/60 pt-1">
-                    {PAGE_KEYS.map((key, idx) => (
-                      <button
-                        key={key}
-                        type="button"
-                        onClick={() => setCalcState({ ...calcState, pageCount: key })}
-                        className={`transition-colors hover:text-[#2b2b2b] cursor-pointer ${
-                          pageIndex === idx ? 'font-semibold text-[#2b2b2b]' : ''
-                        }`}
-                      >
-                        {PAGE_COUNTS[key].label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <p className="font-sans text-xs text-[#2b2b2b]/65 m-0 leading-normal">
-                  {PAGE_COUNTS[calcState.pageCount].description}
-                </p>
-              </div>
-
-              {/* Step 3: Motion & Interactive Effort (Segmented Scale Cards) */}
-              <div className="flex flex-col gap-4 pt-4 border-t border-[#2b2b2b]/10">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-semibold text-[#fc4778] tabular-nums">03</span>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/70 font-semibold">
-                      Motion & Interactive Effort
-                    </span>
-                  </div>
-                  <span className="font-display text-sm font-semibold text-[#2b2b2b]">
-                    {MOTION_EFFORTS[calcState.motionEffort].label}
-                  </span>
-                </div>
-
-                {/* Option Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {EFFORT_KEYS.map((effortKey) => {
-                    const isSelected = calcState.motionEffort === effortKey;
-                    const effort = MOTION_EFFORTS[effortKey];
-                    return (
-                      <button
-                        key={effortKey}
-                        type="button"
-                        onClick={() => setCalcState({ ...calcState, motionEffort: effortKey })}
-                        className={`text-left p-4 rounded-[12px] border transition-all cursor-pointer flex flex-col gap-2 ${
-                          isSelected
-                            ? 'bg-[#fafafa] border-[#2b2b2b] shadow-xs'
-                            : 'bg-transparent border-[#2b2b2b]/15 hover:border-[#2b2b2b]/35'
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <span className={`font-mono text-xs font-semibold ${isSelected ? 'text-[#2b2b2b]' : 'text-[#2b2b2b]/70'}`}>
-                            {effort.label}
-                          </span>
-                          <span className={`font-mono text-[10px] tabular-nums ${isSelected ? 'text-[#fc4778] font-semibold' : 'text-[#2b2b2b]/50'}`}>
-                            {effortKey === 'standard' ? 'Included' : '+₹8k–₹18k'}
-                          </span>
-                        </div>
-                        <p className="font-sans text-xs text-[#2b2b2b]/65 m-0 leading-relaxed">
-                          {effort.description}
-                        </p>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Step 4: Production Timeline (Selectable Option Cards matching Step 3) */}
-              <div className="flex flex-col gap-4 pt-4 border-t border-[#2b2b2b]/10">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-semibold text-[#fc4778] tabular-nums">04</span>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/70 font-semibold">
-                      Production Timeline
-                    </span>
-                  </div>
-                  <span className="font-display text-sm font-semibold text-[#2b2b2b]">
-                    {URGENCIES[calcState.urgency].label}
-                  </span>
-                </div>
-
-                {/* Two Selectable Option Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {/* Option A — Standard Delivery */}
-                  <button
-                    type="button"
-                    onClick={() => setCalcState({ ...calcState, urgency: 'standard' })}
-                    className={`text-left p-4 rounded-[12px] border transition-all cursor-pointer flex flex-col gap-2 ${
-                      calcState.urgency === 'standard'
-                        ? 'bg-[#fafafa] border-[#2b2b2b] shadow-xs'
-                        : 'bg-transparent border-[#2b2b2b]/15 hover:border-[#2b2b2b]/35'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className={`font-mono text-xs font-semibold ${calcState.urgency === 'standard' ? 'text-[#2b2b2b]' : 'text-[#2b2b2b]/70'}`}>
-                        Standard Delivery
-                      </span>
-                      <span className={`font-mono text-[10px] tabular-nums ${calcState.urgency === 'standard' ? 'text-[#fc4778] font-semibold' : 'text-[#2b2b2b]/50'}`}>
-                        No surcharge
-                      </span>
-                    </div>
-                    <p className="font-sans text-xs text-[#2b2b2b]/65 m-0 leading-relaxed">
-                      Balanced delivery with planned review cycles and proper testing.
-                    </p>
-                  </button>
-
-                  {/* Option B — Rush / Priority Sprint */}
-                  <button
-                    type="button"
-                    onClick={() => setCalcState({ ...calcState, urgency: 'rush' })}
-                    className={`text-left p-4 rounded-[12px] border transition-all cursor-pointer flex flex-col gap-2 ${
-                      calcState.urgency === 'rush'
-                        ? 'bg-[#fafafa] border-[#2b2b2b] shadow-xs'
-                        : 'bg-transparent border-[#2b2b2b]/15 hover:border-[#2b2b2b]/35'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className={`font-mono text-xs font-semibold ${calcState.urgency === 'rush' ? 'text-[#2b2b2b]' : 'text-[#2b2b2b]/70'}`}>
-                        Rush / Priority Sprint
-                      </span>
-                      <span className={`font-mono text-[10px] tabular-nums ${calcState.urgency === 'rush' ? 'text-[#fc4778] font-semibold' : 'text-[#2b2b2b]/50'}`}>
-                        +20% surcharge
-                      </span>
-                    </div>
-                    <p className="font-sans text-xs text-[#2b2b2b]/65 m-0 leading-relaxed">
-                      Priority scheduling with a compressed delivery window.
-                    </p>
-                  </button>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Right Column: Floating Live Quote Summary (Suspended Instrument) */}
-            <div className="lg:col-span-5 lg:sticky lg:top-28">
-              <div className="flex flex-col gap-8 p-6 sm:p-8 rounded-[20px] border border-[#2b2b2b]/15 bg-[#fafafa]/80 backdrop-blur-md">
+          <div>
+            {/* ========================================================= */}
+            {/* MOBILE VIEW (lg:hidden): Ultra-Simple, Compact, Non-Dumped */}
+            {/* ========================================================= */}
+            <div className="lg:hidden flex flex-col gap-6 max-w-lg mx-auto w-full">
+              <div className="bg-white rounded-[24px] border border-[#2b2b2b]/10 p-5 sm:p-6 shadow-xs flex flex-col gap-5">
                 
-                {/* Status Indicator */}
-                <div className="flex items-center justify-between pb-4 border-b border-[#2b2b2b]/10">
+                {/* Mobile Header Title */}
+                <div className="flex items-center justify-between pb-3 border-b border-[#2b2b2b]/10">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
-                    <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#2b2b2b]/70 font-semibold">
-                      Live Studio Calculation
+                    <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[#2b2b2b]/70 font-semibold">
+                      Live Studio Calculator
                     </span>
                   </div>
                   <span className="font-mono text-[10px] uppercase tracking-wider text-[#2b2b2b]/50 tabular-nums font-medium">
-                    Estimate Only
+                    Instant Quote
                   </span>
                 </div>
 
-                {/* Hero Numerals: Estimated Price & Timeline */}
-                <div className="flex flex-col gap-6">
-                  {/* Price */}
-                  <div className="flex flex-col gap-1">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/60 font-medium">
-                      Estimated Investment
+                {/* Step 1: Project Type (Clean compact dropdown) */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[#fc4778] font-bold">
+                      01 · Project Type
                     </span>
-                    <div className="font-display font-medium text-[clamp(32px,3.8vw,56px)] text-[#2b2b2b] tracking-tight leading-none tabular-nums transition-all duration-300 break-words">
-                      {getFormattedAnimatedPrice()}
+                    <span className="font-mono text-[10.5px] text-[#2b2b2b]/55 font-medium tabular-nums">
+                      Starts {calcState.currency === 'INR' ? `₹${PROJECT_TYPES[calcState.projectType].basePriceINR.toLocaleString('en-IN')}` : calcState.currency === 'USD' ? `$${Math.round(PROJECT_TYPES[calcState.projectType].basePriceINR / 85)}` : `€${Math.round(PROJECT_TYPES[calcState.projectType].basePriceINR / 92)}`}
+                    </span>
+                  </div>
+                  <div className="relative">
+                    <select
+                      value={calcState.projectType}
+                      onChange={(e) => setCalcState({ ...calcState, projectType: e.target.value as ProjectTypeId })}
+                      className="w-full bg-[#f4f4f4] border border-transparent focus:border-[#2b2b2b]/20 rounded-[12px] px-3.5 py-3 pr-8 font-sans text-sm font-medium text-[#2b2b2b] appearance-none cursor-pointer focus:outline-none"
+                    >
+                      {Object.values(PROJECT_TYPES).map((t) => (
+                        <option key={t.id} value={t.id}>
+                          {t.label}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-[#2b2b2b]/50">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
                     </div>
                   </div>
+                </div>
 
-                  {/* Timeline */}
-                  <div className="flex items-center justify-between pt-4 border-t border-[#2b2b2b]/10">
+                {/* Step 2: Project Size (Compact 4-Pill Grid) */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[#fc4778] font-bold">
+                      02 · Project Size
+                    </span>
+                    <span className="font-sans text-xs font-semibold text-[#2b2b2b]">
+                      {PAGE_COUNTS[calcState.pageCount].label}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-4 gap-1.5 p-1 rounded-[12px] bg-[#f4f4f4]">
+                    {PAGE_KEYS.map((key) => {
+                      const isSelected = calcState.pageCount === key;
+                      return (
+                        <button
+                          key={key}
+                          type="button"
+                          onClick={() => setCalcState({ ...calcState, pageCount: key })}
+                          className={`py-2 px-1 text-center rounded-[9px] font-mono text-[11px] transition-all cursor-pointer ${
+                            isSelected
+                              ? 'bg-[#2b2b2b] text-[#f1f1f1] shadow-xs font-semibold'
+                              : 'text-[#2b2b2b]/70 hover:text-[#2b2b2b] font-medium'
+                          }`}
+                        >
+                          {key === '1' ? '1 Page' : key === '3-5' ? '3–5' : key === '6-10' ? '6–10' : '10+'}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Step 3: Motion Effort (Segmented 2-Pill Toggle) */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[#fc4778] font-bold">
+                      03 · Motion & Interaction
+                    </span>
+                    <span className="font-mono text-[10.5px] text-[#2b2b2b]/50 tabular-nums">
+                      {calcState.motionEffort === 'creative' ? '+₹10k (WebGL)' : 'Included'}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-1.5 p-1 rounded-[12px] bg-[#f4f4f4]">
+                    <button
+                      type="button"
+                      onClick={() => setCalcState({ ...calcState, motionEffort: 'standard' })}
+                      className={`py-2.5 px-2 text-center rounded-[9px] font-mono text-xs transition-all cursor-pointer ${
+                        calcState.motionEffort === 'standard'
+                          ? 'bg-[#2b2b2b] text-[#f1f1f1] shadow-xs font-semibold'
+                          : 'text-[#2b2b2b]/70 hover:text-[#2b2b2b] font-medium'
+                      }`}
+                    >
+                      Standard Polish
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCalcState({ ...calcState, motionEffort: 'creative' })}
+                      className={`py-2.5 px-2 text-center rounded-[9px] font-mono text-xs transition-all cursor-pointer ${
+                        calcState.motionEffort === 'creative'
+                          ? 'bg-[#2b2b2b] text-[#f1f1f1] shadow-xs font-semibold'
+                          : 'text-[#2b2b2b]/70 hover:text-[#2b2b2b] font-medium'
+                      }`}
+                    >
+                      Creative / WebGL
+                    </button>
+                  </div>
+                </div>
+
+                {/* Step 4: Timeline (Segmented 2-Pill Toggle) */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[#fc4778] font-bold">
+                      04 · Production Timeline
+                    </span>
+                    <span className="font-mono text-[10.5px] text-[#2b2b2b]/50 tabular-nums">
+                      {calcState.urgency === 'rush' ? '+20% rush sprint' : 'Standard'}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-1.5 p-1 rounded-[12px] bg-[#f4f4f4]">
+                    <button
+                      type="button"
+                      onClick={() => setCalcState({ ...calcState, urgency: 'standard' })}
+                      className={`py-2.5 px-2 text-center rounded-[9px] font-mono text-xs transition-all cursor-pointer ${
+                        calcState.urgency === 'standard'
+                          ? 'bg-[#2b2b2b] text-[#f1f1f1] shadow-xs font-semibold'
+                          : 'text-[#2b2b2b]/70 hover:text-[#2b2b2b] font-medium'
+                      }`}
+                    >
+                      Standard Delivery
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCalcState({ ...calcState, urgency: 'rush' })}
+                      className={`py-2.5 px-2 text-center rounded-[9px] font-mono text-xs transition-all cursor-pointer ${
+                        calcState.urgency === 'rush'
+                          ? 'bg-[#2b2b2b] text-[#f1f1f1] shadow-xs font-semibold'
+                          : 'text-[#2b2b2b]/70 hover:text-[#2b2b2b] font-medium'
+                      }`}
+                    >
+                      Rush Sprint (+20%)
+                    </button>
+                  </div>
+                </div>
+
+                {/* Compact Mobile Results & CTA Strip */}
+                <div className="pt-4 border-t border-[#2b2b2b]/10 flex flex-col gap-4">
+                  <div className="flex items-end justify-between">
                     <div className="flex flex-col gap-0.5">
-                      <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/60 font-medium">
-                        Production Velocity
+                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#2b2b2b]/60 font-medium">
+                        Estimated Investment
                       </span>
-                      <span className="font-display text-2xl font-medium text-[#2b2b2b] tracking-tight tabular-nums">
+                      <div className="font-display font-medium text-3xl text-[#2b2b2b] tracking-tight tabular-nums">
+                        {getFormattedAnimatedPrice()}
+                      </div>
+                    </div>
+                    <div className="text-right flex flex-col gap-0.5">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#2b2b2b]/60 font-medium">
+                        Velocity
+                      </span>
+                      <span className="font-display text-xl font-medium text-[#2b2b2b] tabular-nums">
                         {calcResult.formattedTimeline}
                       </span>
                     </div>
-                    <div className="text-right flex flex-col gap-0.5">
-                      <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#2b2b2b]/50 font-medium">
-                        Milestones
-                      </span>
-                      <span className="font-mono text-xs text-[#2b2b2b]/80 font-semibold tabular-nums">
-                        50 / 25 / 25
-                      </span>
-                    </div>
                   </div>
-                </div>
 
-                {/* Scope Breakdown Chips */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#2b2b2b]/5 text-[#2b2b2b]/75 font-medium">
-                    {PROJECT_TYPES[calcState.projectType].label}
-                  </span>
-                  <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#2b2b2b]/5 text-[#2b2b2b]/75 font-medium">
-                    {PAGE_COUNTS[calcState.pageCount].label}
-                  </span>
-                  <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#2b2b2b]/5 text-[#2b2b2b]/75 font-medium">
-                    {MOTION_EFFORTS[calcState.motionEffort].label}
-                  </span>
-                  <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#2b2b2b]/5 text-[#2b2b2b]/75 font-medium">
-                    {URGENCIES[calcState.urgency].label}
-                  </span>
-                </div>
-
-                {/* Primary CTA Button */}
-                <div className="flex flex-col gap-3 pt-2">
                   <button
                     type="button"
                     onClick={handleBookWithEstimate}
-                    className="btn btn--solid w-full py-[14px] text-xs tracking-[0.14em] font-medium flex items-center justify-center gap-2 group cursor-pointer"
+                    className="w-full bg-[#1c1c1c] hover:bg-black text-[#f1f1f1] rounded-full py-3.5 px-6 font-mono text-xs uppercase tracking-[0.16em] font-semibold text-center transition-all shadow-md active:scale-[0.99] flex items-center justify-center gap-2 group cursor-pointer"
                   >
-                    <span>Start a conversation</span>
+                    <span>START A CONVERSATION</span>
                     <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </button>
-
-                  <p className="font-sans text-[11px] text-[#2b2b2b]/60 leading-normal text-center m-0">
-                    Planning estimate for design & development. Excludes third-party fees (domain, hosting, APIs) and taxes. Binding quotes confirmed upon technical review.
-                  </p>
                 </div>
 
               </div>
             </div>
 
+            {/* ========================================================= */}
+            {/* DESKTOP VIEW (hidden lg:grid): 100% Original Studio Design */}
+            {/* Matching user reference screenshot exactly */}
+            {/* ========================================================= */}
+            <div className="hidden lg:grid grid-cols-12 gap-12 lg:gap-16 items-start">
+              
+              {/* Left Column: Interactive Configuration Sliders & Selectors */}
+              <div className="col-span-7 flex flex-col gap-10">
+                
+                {/* Step 1: Project Type Selection */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-xs font-semibold text-[#fc4778] tabular-nums">01</span>
+                      <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/70 font-semibold">
+                        PROJECT TYPE
+                      </span>
+                    </div>
+                    <span className="font-mono text-[11px] text-[#2b2b2b]/55 font-medium tabular-nums">
+                      Starting: {calcState.currency === 'INR' ? `₹${PROJECT_TYPES[calcState.projectType].basePriceINR.toLocaleString('en-IN')}` : calcState.currency === 'USD' ? `$${Math.round(PROJECT_TYPES[calcState.projectType].basePriceINR / 85)}` : `€${Math.round(PROJECT_TYPES[calcState.projectType].basePriceINR / 92)}`}
+                    </span>
+                  </div>
+
+                  {/* Dropdown Selector */}
+                  <div className="relative">
+                    <select
+                      value={calcState.projectType}
+                      onChange={(e) => setCalcState({ ...calcState, projectType: e.target.value as ProjectTypeId })}
+                      className="w-full bg-[#fafafa] border border-[#2b2b2b]/15 hover:border-[#2b2b2b]/35 focus:border-[#2b2b2b] rounded-[10px] px-4 py-3.5 font-sans text-base text-[#2b2b2b] focus:outline-none transition-colors appearance-none cursor-pointer"
+                    >
+                      {Object.values(PROJECT_TYPES).map((t) => (
+                        <option key={t.id} value={t.id}>
+                          {t.label} &mdash; Starting at ₹{t.basePriceINR.toLocaleString('en-IN')}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#2b2b2b]/60">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="font-sans text-xs text-[#2b2b2b]/65 m-0 leading-normal">
+                    {PROJECT_TYPES[calcState.projectType].description} ({PROJECT_TYPES[calcState.projectType].includedPages})
+                  </p>
+                </div>
+
+                {/* Step 2: Project Size (Tactile Horizontal Slider) */}
+                <div className="flex flex-col gap-4 pt-4 border-t border-[#2b2b2b]/10">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-xs font-semibold text-[#fc4778] tabular-nums">02</span>
+                      <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/70 font-semibold">
+                        PROJECT SIZE
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-display text-sm font-semibold text-[#2b2b2b]">
+                        {PAGE_COUNTS[calcState.pageCount].label}
+                      </span>
+                      {PAGE_COUNTS[calcState.pageCount].timelineDeltaWeeks > 0 && (
+                        <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#2b2b2b]/5 text-[#2b2b2b]/70 font-medium">
+                          +{PAGE_COUNTS[calcState.pageCount].timelineDeltaWeeks}w
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Tactile Range Slider */}
+                  <div className="flex flex-col gap-2">
+                    <input
+                      type="range"
+                      min="0"
+                      max="3"
+                      step="1"
+                      value={pageIndex}
+                      onChange={(e) => setCalcState({ ...calcState, pageCount: PAGE_KEYS[parseInt(e.target.value, 10)] })}
+                      className="w-full accent-[#2b2b2b] h-1.5 bg-[#2b2b2b]/15 rounded-lg appearance-none cursor-pointer"
+                      aria-label="Project Size Slider"
+                    />
+                    {/* Step Ticks */}
+                    <div className="flex justify-between items-center text-[11px] font-mono text-[#2b2b2b]/60 pt-1">
+                      {PAGE_KEYS.map((key, idx) => (
+                        <button
+                          key={key}
+                          type="button"
+                          onClick={() => setCalcState({ ...calcState, pageCount: key })}
+                          className={`transition-colors hover:text-[#2b2b2b] cursor-pointer ${
+                            pageIndex === idx ? 'font-semibold text-[#2b2b2b]' : ''
+                          }`}
+                        >
+                          {PAGE_COUNTS[key].label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="font-sans text-xs text-[#2b2b2b]/65 m-0 leading-normal">
+                    {PAGE_COUNTS[calcState.pageCount].description}
+                  </p>
+                </div>
+
+                {/* Step 3: Motion & Interactive Effort (Segmented Scale Cards) */}
+                <div className="flex flex-col gap-4 pt-4 border-t border-[#2b2b2b]/10">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-xs font-semibold text-[#fc4778] tabular-nums">03</span>
+                      <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/70 font-semibold">
+                        MOTION &amp; INTERACTIVE EFFORT
+                      </span>
+                    </div>
+                    <span className="font-display text-sm font-semibold text-[#2b2b2b]">
+                      {MOTION_EFFORTS[calcState.motionEffort].label}
+                    </span>
+                  </div>
+
+                  {/* Option Cards */}
+                  <div className="grid grid-cols-2 gap-3">
+                    {EFFORT_KEYS.map((effortKey) => {
+                      const isSelected = calcState.motionEffort === effortKey;
+                      const effort = MOTION_EFFORTS[effortKey];
+                      return (
+                        <button
+                          key={effortKey}
+                          type="button"
+                          onClick={() => setCalcState({ ...calcState, motionEffort: effortKey })}
+                          className={`text-left p-4 rounded-[12px] border transition-all cursor-pointer flex flex-col gap-2 ${
+                            isSelected
+                              ? 'bg-[#fafafa] border-[#2b2b2b] shadow-xs'
+                              : 'bg-transparent border-[#2b2b2b]/15 hover:border-[#2b2b2b]/35'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className={`font-mono text-xs font-semibold ${isSelected ? 'text-[#2b2b2b]' : 'text-[#2b2b2b]/70'}`}>
+                              {effort.label}
+                            </span>
+                            <span className={`font-mono text-[10px] tabular-nums ${isSelected ? 'text-[#fc4778] font-semibold' : 'text-[#2b2b2b]/50'}`}>
+                              {effortKey === 'standard' ? 'Included' : '+₹8k–₹18k'}
+                            </span>
+                          </div>
+                          <p className="font-sans text-xs text-[#2b2b2b]/65 m-0 leading-relaxed">
+                            {effort.description}
+                          </p>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Step 4: Production Timeline (Selectable Option Cards matching Step 3) */}
+                <div className="flex flex-col gap-4 pt-4 border-t border-[#2b2b2b]/10">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-xs font-semibold text-[#fc4778] tabular-nums">04</span>
+                      <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/70 font-semibold">
+                        PRODUCTION TIMELINE
+                      </span>
+                    </div>
+                    <span className="font-display text-sm font-semibold text-[#2b2b2b]">
+                      {URGENCIES[calcState.urgency].label}
+                    </span>
+                  </div>
+
+                  {/* Two Selectable Option Cards */}
+                  <div className="grid grid-cols-2 gap-3">
+                    {/* Option A — Standard Delivery */}
+                    <button
+                      type="button"
+                      onClick={() => setCalcState({ ...calcState, urgency: 'standard' })}
+                      className={`text-left p-4 rounded-[12px] border transition-all cursor-pointer flex flex-col gap-2 ${
+                        calcState.urgency === 'standard'
+                          ? 'bg-[#fafafa] border-[#2b2b2b] shadow-xs'
+                          : 'bg-transparent border-[#2b2b2b]/15 hover:border-[#2b2b2b]/35'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className={`font-mono text-xs font-semibold ${calcState.urgency === 'standard' ? 'text-[#2b2b2b]' : 'text-[#2b2b2b]/70'}`}>
+                          Standard Delivery
+                        </span>
+                        <span className={`font-mono text-[10px] tabular-nums ${calcState.urgency === 'standard' ? 'text-[#fc4778] font-semibold' : 'text-[#2b2b2b]/50'}`}>
+                          No surcharge
+                        </span>
+                      </div>
+                      <p className="font-sans text-xs text-[#2b2b2b]/65 m-0 leading-relaxed">
+                        Balanced delivery with planned review cycles and proper testing.
+                      </p>
+                    </button>
+
+                    {/* Option B — Rush / Priority Sprint */}
+                    <button
+                      type="button"
+                      onClick={() => setCalcState({ ...calcState, urgency: 'rush' })}
+                      className={`text-left p-4 rounded-[12px] border transition-all cursor-pointer flex flex-col gap-2 ${
+                        calcState.urgency === 'rush'
+                          ? 'bg-[#fafafa] border-[#2b2b2b] shadow-xs'
+                          : 'bg-transparent border-[#2b2b2b]/15 hover:border-[#2b2b2b]/35'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className={`font-mono text-xs font-semibold ${calcState.urgency === 'rush' ? 'text-[#2b2b2b]' : 'text-[#2b2b2b]/70'}`}>
+                          Rush / Priority Sprint
+                        </span>
+                        <span className={`font-mono text-[10px] tabular-nums ${calcState.urgency === 'rush' ? 'text-[#fc4778] font-semibold' : 'text-[#2b2b2b]/50'}`}>
+                          +20% surcharge
+                        </span>
+                      </div>
+                      <p className="font-sans text-xs text-[#2b2b2b]/65 m-0 leading-relaxed">
+                        Priority scheduling with a compressed delivery window.
+                      </p>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Right Column: Floating Live Quote Summary (Original Design) */}
+              <div className="col-span-5 sticky top-28">
+                <div className="flex flex-col gap-8 p-6 sm:p-8 rounded-[20px] border border-[#2b2b2b]/15 bg-[#fafafa]/80 backdrop-blur-md">
+                  
+                  {/* Status Indicator */}
+                  <div className="flex items-center justify-between pb-4 border-b border-[#2b2b2b]/10">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
+                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#2b2b2b]/70 font-semibold">
+                        Live Studio Calculation
+                      </span>
+                    </div>
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#2b2b2b]/50 tabular-nums font-medium">
+                      Estimate Only
+                    </span>
+                  </div>
+
+                  {/* Hero Numerals: Estimated Price & Timeline */}
+                  <div className="flex flex-col gap-6">
+                    {/* Price */}
+                    <div className="flex flex-col gap-1">
+                      <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/60 font-medium">
+                        Estimated Investment
+                      </span>
+                      <div className="font-display font-medium text-[clamp(32px,3.8vw,56px)] text-[#2b2b2b] tracking-tight leading-none tabular-nums transition-all duration-300 break-words">
+                        {getFormattedAnimatedPrice()}
+                      </div>
+                    </div>
+
+                    {/* Timeline */}
+                    <div className="flex items-center justify-between pt-4 border-t border-[#2b2b2b]/10">
+                      <div className="flex flex-col gap-0.5">
+                        <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/60 font-medium">
+                          Production Velocity
+                        </span>
+                        <span className="font-display text-2xl font-medium text-[#2b2b2b] tracking-tight tabular-nums">
+                          {calcResult.formattedTimeline}
+                        </span>
+                      </div>
+                      <div className="text-right flex flex-col gap-0.5">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#2b2b2b]/50 font-medium">
+                          Milestones
+                        </span>
+                        <span className="font-mono text-xs text-[#2b2b2b]/80 font-semibold tabular-nums">
+                          50 / 25 / 25
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Scope Breakdown Chips */}
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#2b2b2b]/5 text-[#2b2b2b]/75 font-medium">
+                      {PROJECT_TYPES[calcState.projectType].label}
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#2b2b2b]/5 text-[#2b2b2b]/75 font-medium">
+                      {PAGE_COUNTS[calcState.pageCount].label}
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#2b2b2b]/5 text-[#2b2b2b]/75 font-medium">
+                      {MOTION_EFFORTS[calcState.motionEffort].label}
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#2b2b2b]/5 text-[#2b2b2b]/75 font-medium">
+                      {URGENCIES[calcState.urgency].label}
+                    </span>
+                  </div>
+
+                  {/* Primary CTA Button */}
+                  <div className="flex flex-col gap-3 pt-2">
+                    <button
+                      type="button"
+                      onClick={handleBookWithEstimate}
+                      className="btn btn--solid w-full py-[14px] text-xs tracking-[0.14em] font-medium flex items-center justify-center gap-2 group cursor-pointer"
+                    >
+                      <span>Start a conversation</span>
+                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </button>
+
+                    <p className="font-sans text-[11px] text-[#2b2b2b]/60 leading-normal text-center m-0">
+                      Planning estimate for design &amp; development. Excludes third-party fees (domain, hosting, APIs) and taxes. Binding quotes confirmed upon technical review.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
           </div>
         )}
 
