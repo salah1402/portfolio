@@ -36,10 +36,6 @@ export const SelectedWorks: React.FC = () => {
         {/* Editorial Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-2">
           <div className="max-w-2xl flex flex-col gap-3">
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#2b2b2b]/65 font-medium tabular-nums m-0 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#fc4778]" />
-              Selected work (06)
-            </p>
             <h2 className="font-display font-medium text-[clamp(32px,4.4vw,72px)] tracking-[-0.04em] leading-[0.94] text-[#2b2b2b] m-0">
               Recent projects.
             </h2>
